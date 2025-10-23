@@ -1,0 +1,365 @@
+[
+  {
+    "title": "Governing board decision unreasonable because it was irrational having considered relevant information",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If it was irrational for Governors panel not to agree with the arguments made at the Governors panel": [
+          "The school's governing board were bound by the principals of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be reasonable.",
+          "In the Wednesbury case, the court found that reasonableness includes the principle that a public body must not fail to take relevant information into account when making a decision. The effect of this is that the governing board must account for all relevant information and consider it before concluding on any of the arguments presented by the family or on whether the various legal tests are satisfied.",
+          "In the governing board hearing, it was argued that <<ARGUMENT MADE THAT THE GOVERNORS WERE IRRATIONAL NOT TO AGREE WITH>>.",
+          "Evidence was provided to support this argument in the form of <<DESCRIPTION OF THE EVIDENCE THAT SUPPORTED THE ARGUMENTED>>. This document explained that <<“QUOTE FROM THE EVIDENCE THAT SUPPORTED THE ARGUMENT”>>.",
+          "Despite this, the governing board concluded that <<DECISION THAT WAS IRRATIONAL>>.",
+          "This conclusion does not logically follow from the information and evidence presented. It is not within a range of reasonable conclusions that the governing board could have reached and is therefore unreasonable under the test included in the Wednesbury case.",
+          "In the governing board's letter confirming the permanent exclusion, the governing board explained that the <<DECISION THAT IS IRRATIONAL>>. However, the governing board had access to <<DOCUMENT CONTAINING RELEVANT INFORMATION>>, which set out that <<INFORMATION RELEVANT TO IRRATIONAL DECISION>>.",
+          "This conclusion does not logically follow from the information and evidence presented. It is not within a range of reasonable conclusions that the governing board could have reached and is therefore unreasonable under the test included in the Wednesbury case.",
+          "The IRP is therefore invited to quash the decision to uphold the permanent exclusion and direct reconsideration of it."
+        ]
+      }
+    }
+  },    
+  {
+    "title": "Governing board hearing unfair (arrangements)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If any procedural issues about the Governors Panel were raised of not having enough time": [
+          "The IRP is asked to agree that the process of the governing board hearing of CHILD_NAME's permanent exclusion was procedurally flawed.",
+          "In public law, 'fairness' describes the requirement that any decision the governing board takes must result in a procedurally fair process. The procedure followed by the governing board in this case was flawed because the governing board hearing was held when it materially disadvantaged the family and advantaged the school.",
+          "The permanent exclusion was issued on <<EXCLUSION_DATE>>. The family received the panel pack containing the school's evidence on <<DATE THE PANEL PACK WAS RECEIVED BY THE FAMILY>>. The governing board hearing then took place on <<DATE OF THE GOVERNORS' HEARING>>.",
+          "This is a very short timeframe to expect a family to be able to understand the case against CHILD_NAME, learn the relevant law, obtain records from the school, and prepare a case. The meeting was arranged without consultation with the family, and this is a serious failing considering the school is already, inevitably, in a much stronger position than the family, having relevant expertise, knowledge of the process, and of CHILD_NAME's school records. They also have a relationship with the governing board.",
+          "Considering this significant imbalance in power, the family required support and understanding to facilitate their effective participation. Instead, the hearing was arranged with far too little notice for them to be able to understand the relevant law or prepare a case in their defence. This seriously undermines the family's capacity to obtain a fair hearing and access to justice. The IRP is therefore asked to direct that the governors reconsider their decision.",
+          "The permanent exclusion was issued on <<EXCLUSION_DATE>>. The family received the panel pack containing the school's evidence on <<DATE THE PANEL PACK WAS RECEIVED BY THE FAMILY>>. The governing board hearing then took place on <<DATE OF THE GOVERNORS' HEARING>>.",
+          "This is despite the family making a subject access request/freedom of information request on <<DATE THE REQUEST WAS MADE>>. In anticipation of the receipt of information, the family requested that the hearing be adjourned. However, this request was denied/ignored. This is wholly inappropriate and unfair. The school has unfettered access to all their records to pick and choose from to prepare their case. A common-sense understanding of fairness requires that the family get the same opportunity to access and evaluate the records and information they need and are entitled to under law.",
+          "There was no good reason for the governing board to proceed in the face of this request to adjourn, and expedience alone does not justify the denial of the family's rights.",
+          "Accordingly, the IRP is asked to direct the governing board to reconsider the exclusion."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board hearing unfair (hostile)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If issues with the the Governors being hostile and impartial during the Governors Panel were raised": [
+          "The IRP is asked to agree that the process of the governing board hearing of CHILD_NAME's permanent exclusion was procedurally flawed.",
+          "In public law, 'fairness' describes the requirement that any decision the governing board takes must result from a procedurally fair process.",
+          "The 1923 case of R v Sussex Justices Ex Parte McCarthy set out the principle that: \n “it is not merely of some importance but is of fundamental importance that justice should not only be done, but should manifestly and undoubtedly be seen to be done”",
+          "The conduct of the governing board was aggressive/hostile/unprofessional/impatient when interacting with CHILD_NAME and the family.",
+          "<<PROVIDE EXAMPLES OF POOR BEHAVIOUR FROM GOVERNORS>>.",
+          "This is a serious failing. It demonstrates the appearance of bias in the way in which the governing board interacted with the parties. It at least exposes carelessness, a failure to place both parties on an equal footing, and a failure to treat both parties' submissions with equal weight. It also evidences a failure to be impartial and a form of conduct that is likely to make the family less comfortable than the school and less able to advocate their position. This is a serious failing that is at odds with the principle that justice must be manifestly and undoubtedly seen to be done.",
+          "The IRP is asked to quash the permanent exclusion and direct reconsideration of it.",
+          "During the hearing, the governing board disciplined CHILD_NAME, as if the misconduct they were accused of was assumed and the governing board's role was to rebuke them for their behaviour.",
+          "Their statements included that <<“QUOTE FROM THE GOVERNORS THAT HIGHLIGHTS INAPPROPRIATE CONDUCT”>>. This exhibits either a misunderstanding of their role – that they believe they are there to discipline the young person as an arm of the school rather than act as an independent adjudicator – or a willingness to disregard their requirement to be independent to support the headteacher's case against CHILD_NAME.",
+          "Clearly, the governing board has failed to run proceedings in a manner that is fair on a common-sense understanding of the term. Therefore, even if the IRP feels that their conclusions are sound, justice does not appear to have been done, and the IRP should quash the permanent exclusion and direct reconsideration of it."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board hearing unfair (insufficient time to speak)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      },
+      {
+        "content": "The governing board should agree the steps they will take to ensure all parties will be supported to participate in its consideration and have their views heard. This is particularly important where pupils aged under 18 years old are speaking about their own suspension or permanent exclusion or giving evidence to the governing board.",
+        "reference": "Paragraph 121, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If it is suggested that the Governing Board did not allow much time for the hearing or much time for the family's side": [
+          "The IRP is asked to agree that the process of the governing board hearing of CHILD_NAME permanent exclusion was procedurally flawed.",
+          "In public law, 'fairness' describes the requirement that any decision the governing board takes must result in a procedurally correct process. The procedure followed by the governing board in this case was flawed because the governing board did not allow the family to present their full case.",
+          "The governing board only allowed <<AMOUNT OF TIME>> for the hearing. This was wholly insufficient to address complex questions of fact and law that required a careful examination of the evidence and the opportunity to undertake meaningful questioning and deliver a detailed statement.",
+          "This failure to allow sufficient time is a serious procedural error. It has resulted in CHILD_NAME being denied the opportunity to have their defence fairly heard  which is a key requirement in any disciplinary process. It has also handed an unfair advantage to the school who has had the benefit of conducting the investigation and asking questions of CHILD_NAME ahead of the hearing.",
+          "The IRP is therefore asked to quash the exclusion and direct reconsideration of it.",
+          "At the governors' hearing, less time was allowed to the family than it was to the headteacher and school staff to make statements. The school made their statement for <<AMOUNT OF TIME SCHOOL MADE STATEMENT>> and were allowed to speak without interruption. The family were allowed less time to speak/were not able to speak without interruption. While it is appreciated that it can be a challenge for the governing board to maintain parity between the school staff and family considering their relationship with staff, this is why it is so important that they discharge this function proactively, taking extra care not to benefit the school through the conduct of the hearing.",
+          "They have failed to do that in CHILD_NAME's hearing. This is a serious procedural failing, it has exacerbated the inequity in power between the school and family and undermined CHILD_NAME's opportunity to have their defence fairly heard.",
+          "During the hearing, the governing board disciplined CHILD_NAME, as if the misconduct they were accused of was assumed and the governing board's role was to rebuke them for their behaviour."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board hearing unfair (private conversations)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      },
+      {
+        "content": "Where the governing board is legally required to consider the reinstatement of a suspended or permanently excluded pupil they should not discuss the suspension or permanent exclusion with any party outside the meeting.",
+        "reference": "Paragraph 112, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If impartiality is suggested where Governors were having conversations with the headteacher/teachers outside the hearing or in the room before the hearing officially began": [
+          "The IRP is asked to agree that the process of the governing board hearing of CHILD_NAME permanent exclusion was procedurally flawed.",
+          "In public law, 'fairness' describes the requirement that any decision the governing board takes must result from a procedurally correct process.",
+          "The procedure followed by the governing board in this case was flawed because the governing board and the headteacher had discussed the matter outside of the hearing, and this is prohibited in accordance with paragraph 112 of the exclusions guidance.",
+          "While we cannot know what the content of these discussions is, it is, in a sense, irrelevant. The 1923 case of R v Sussex Justices Ex Parte McCarthy set out the principle that: \n “it is not merely of some importance but is of fundamental importance that justice should not only be done, but should manifestly and undoubtedly be seen to be done”,",
+          "The effect of this is that the governing board's appearance of bias has already undermined the integrity of the process, even if the family cannot prove what the content of these conversations was.",
+          "When the family were invited to enter the hearing room, the school staff was already in the room and seated. They appear to have been speaking with the governors in confidence.",
+          "The governors/headteacher stated in the hearing that <<“QUOTE THAT INDICATED PRIVATE CONVERSATIONS HAD TAKEN PLACE”>> which was a reference to something that was not said in the hearing or anywhere the family had been present.",
+          "Clearly, therefore, conversations have been had in private regarding CHILD_NAME's exclusion. The IRP is asked to quash the permanent exclusion and direct reconsideration of it."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is disproportionate",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's governing board was bound by the principles of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be proportionate.",
+          "In public law, 'fairness' describes the requirement that any decision the governing board takes must be one in which the impact to CHILD_NAME does not outweigh the benefit of the legitimate objective sought.",
+          "This exercise should be considered in two ways.",
+          "Firstly, does the punishment fit the behavioural infraction? If the impact of permanent exclusion on the young person outweighs the seriousness of the misbehaviour, then the permanent exclusion will be disproportionate.",
+          "Secondly, does the benefit to the school community at large justify the personal cost to the young person? If the school is excluding the young person in the interests of other members of the school community, but the benefit to that community will be small whereas the impact of the permanent exclusion will be significant, then the permanent exclusion will be disproportionate.",
+          "Just as the headteacher must not permanently exclude someone if it would be disproportionate, the governing board must not uphold a permanent exclusion if they find it to be disproportionate.",
+          "In 2017, there was a case in the High Court called Craig v Farriers Registration Council. The case found that where a disciplinary body has two disciplinary responses available that would both be within a range of appropriate responses, the less severe one should be chosen, because otherwise the more serious punishment is being arbitrarily imposed.",
+          "In the case, the court found that even where it is appropriate to impose a less severe punishment, their lack of power to choose the less serious response does not justify them upholding the more severe option just because it was the only one available to them. Therefore, in accordance with this judgement, if the governing board feels that a less severe punishment than permanent exclusion would also be appropriate, even though they don't have the power to impose the less severe punishment, they must still reinstate the young person and decline to uphold the exclusion.",
+          "The impact of the permanent exclusion on CHILD_NAME will be very significant. In addition to the impact that every permanently excluded young person experiences, for CHILD_NAME it will mean <<DESCRIBE THE PARTICULAR IMPACT FOR THE STUDENT>>.",
+          "The school could have administered a disciplinary response to CHILD_NAME which would have been more appropriate in the circumstances, without permanently excluding them. Therefore, by upholding the permanent exclusion the governing board has acted disproportionately.",
+          "The IRP is asked to quash the permanent exclusion and direct reconsideration."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is irrational because it failed to include relevant information",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's governing board was bound by the principles of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be reasonable.",
+          "In the Wednesbury case, the court found that reasonableness includes the principle that a public body must not fail to take relevant information into account when making a decision. The effect of this is that the governing board must account for all relevant information and consider it before concluding on any of the arguments presented by the family or on whether the various legal tests are satisfied.",
+          "In the <<GOVERNING BODY'S LETTER CONFIRMING THE EXCLUSION/MINUTES OF THE GOVERNING BODY HEARING>> it is recorded that, in deciding whether <<THE DECISION THAT THE GOVERNORS MADE WITHOUT RELEVANT INFORMATION>>, the governing board considered the following information:<<“QUOTE EVIDENCING THE INFORMATION THAT THE GOVERNORS ACCOUNTED FOR”>>",
+          "There is no evidence to suggest that the governors took <<RELEVANT INFORMATION>> into account. This information may have had a material impact on the governing board's decision-making. The decision cannot therefore be said to be rational under the Wednesbury test.",
+          "The IRP is therefore asked to quash the exclusion and direct the governing board to reconsider.",
+          "The family asked the governing board to reinstate CHILD_NAME for reasons including that <<ARGUMENT PRESENTED THAT LED TO THE GOVERNORS' IRRATIONAL CONCLUSION>>. In support of this argument, the family explained that “<<INFORMATION OR EVIDENCE THAT THE GOVERNORS FAILED TO CONSIDER>>”.",
+          "There is no evidence to suggest that the governing board took this relevant information into account. This information may have had a material impact on the governing board's decision-making. The decision cannot therefore be said to be reasonable under the Wednesbury test.",
+          "The IRP is therefore asked to quash the exclusion and direct the governing board to reconsider."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is irrational because it included irrelevant information",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's governing board was bound by the principles of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be reasonable.",
+          "In the Wednesbury case, the court found that reasonableness includes the principle that a public body must not fail to take relevant information into account when making a decision. The effect of this is that the governing board must account for all relevant information and consider it before concluding on any of the arguments presented by the family or on whether the various legal tests are satisfied.",
+          "In the <<GOVERNING BODY'S LETTER CONFIRMING THE EXCLUSION/MINUTES OF THE GOVERNING BODY HEARING>> the governing board explains that “<<QUOTE SHOWING THE CONSIDERATION OF IRRELEVANT INFORMATION>>”",
+          "This does not inform any of the legal tests of the facts of the case that were in dispute, and the governors should not, therefore, have considered it as a part of their decision-making.",
+          "Clearly, the governing board has taken irrelevant information into account, and the IRP is asked to quash the exclusion and direct reconsideration."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is unlawful (administrative/public law)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's governing board was bound by the principles of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be reasonable.",
+          "In public law, 'lawfulness' describes the requirement that any decision the governing board takes must be one that they have the authority to make in law. The governing board has declined to reinstate CHILD_NAME, instead upholding the permanent exclusion. This is despite the governing board acknowledging in the letter confirming their decision/the minutes of their deliberations that the headteacher's decision to exclude was not in accordance with the general principles of public law. This can be seen in their decision that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”.",
+          "Proportionality describes the balancing exercise between the impact of exclusion on the young person and the benefit gained by the school for having excluded them.",
+          "This exercise should be considered in two ways.",
+          "Firstly, does the punishment fit the behavioural infraction? If the impact of permanent exclusion on the young person outweighs the seriousness of the misbehaviour, then the permanent exclusion will be disproportionate.",
+          "Secondly, does the benefit to the school community at large justify the personal cost to the young person? If the school is excluding the young person in the interests of other members of the school community, but the benefit to that community will be small whereas the impact of the permanent exclusion will be significant, then the permanent exclusion will be disproportionate.",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS DISPROPORTIONATE>>”, the governing board clearly agree that the exclusion amounted to a significant impact on the young person that is disproportionate to the objective being pursued. Despite this the governing board decided to uphold the exclusion.",
+          "Fairness in public law describes the procedural steps taken to come to a decision. If those steps do not follow mandatory procedure or are biased, erroneous or otherwise unfair, then the resulting decision should be considered flawed.",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS NOT PROCEDURALLY FAIR>>”, the governing board clearly agree that the processes followed by the headteacher in deciding to exclude were flawed. The governing board should therefore have reinstated CHILD_NAME. Despite this the governing board decided to uphold the exclusion.",
+          "Reasonableness requires that the conclusions that are drawn in deciding to exclude are of good enough quality. It is sometimes referred to as the requirement that decisions be 'rational'. There are three elements:",
+          "Firstly, did the school consider factors that it ought not to have considered? Relying on factors or information that are not relevant may cause the decision to be irrational and fail the reasonableness test.",
+          "Secondly, did the school fail to consider factors that it ought to have considered? If there are relevant factors that the headteacher has not considered before deciding to exclude, then the decision may be irrational, and therefore the exclusion may be unreasonable.",
+          "Thirdly, was the decision to exclude so unreasonable that no reasonable headteacher would have made it? If the decision of the headteacher was made after considering the right information but plainly does not follow logically from the information available, then it may be considered unreasonable.",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNREASONABLE>>”, the governing board clearly agrees that the exclusion amounted to a decision that was irrational under an administrative legal understanding of reasonableness. Despite this, the governing board decided to uphold the exclusion."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is unlawful (discrimination)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The governing board has declined to reinstate CHILD_NAME, instead upholding the permanent exclusion. This is despite the governing board acknowledging in the letter confirming their decision/the minutes of their deliberations that the headteacher's decision to exclude was not in accordance with the requirements of the Equality Act 2010. This can be seen in their finding that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS DISCRIMINATORY>>”. This means that the exclusion amounted to <<SPECIFY THE TYPE(S) OF DISCRIMINATION, DIRECT, INDIRECT, FAILURE TO MAKE REASONABLE ADJUSTMENTS, OR VICTIMISATION>> as defined by the Equality Act.",
+          "Direct discrimination is included at section 13 of the Equality Act.",
+          "Section 13 states at subsection 1 that: \n “A person (A) discriminates against another (B) if, because of a protected characteristic, A treats B less favourably than A treats or would treat others.”",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”, the governing board clearly agree that the permanent exclusion amounted to direct discrimination. They agree that young person is <<SPECIFY THEIR PROTECTED CHARACTERISTIC>> and that they have been treated less favourably because of being <<SPECIFY THEIR PROTECTED CHARACTERISTIC>>. Despite this, the governing board decided to uphold the permanent exclusion anyway.",
+          "Therefore, by failing to reinstate CHILD_NAME they have made a decision that they had no lawful power to make. They have therefore acted beyond the scope of their lawful powers, and the IRP is asked to quash the decision and direct the governing board to reconsider.",
+          "Indirect discrimination is included at section 19 of the Equality Act.",
+          "Section 19 states that: \n “(1) A person (A) discriminates against another (B) if A applies to B a provision, criterion or practice which is discriminatory in relation to a relevant protected characteristic of B's. \n (2) For the purposes of subsection (1), a provision, criterion or practice is discriminatory in relation to a relevant protected characteristic of B's if— \n (a) A applies, or would apply, it to persons with whom B does not share the characteristic, \n (b) it puts, or would put, persons with whom B shares the characteristic at a particular disadvantage when compared with persons with whom B does not share it, \n (c) it puts, or would put, B at that disadvantage, and \n (d) A cannot show it to be a proportionate means of achieving a legitimate aim.”",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”, the governing board clearly agree that the permanent exclusion amounted to indirect discrimination. They are agreeing that CHILD_NAME is <<SPECIFY THEIR PROTECTED CHARACTERISTIC>> and that they have suffered a disadvantage because of being <<SPECIFY THEIR PROTECTED CHARACTERISTIC>> when compared to someone who does not share this protected characteristic. Despite this the governing board decided to uphold the permanent exclusion anyway.",
+          "Therefore, by failing to reinstate CHILD_NAME they have made a decision that they had no lawful power to make. They have therefore acted beyond the scope of their lawful powers, and the IRP is asked to quash the decision and direct the governing board to reconsider.",
+          "Section 20 of the Equality Act describes the duty to make reasonable adjustments.",
+          "At subsection 3, the Act states that: \n “The first requirement is a requirement, where a provision, criterion or practice of A's puts a disabled person at a substantial disadvantage in relation to a relevant matter in comparison with persons who are not disabled, to take such steps as it is reasonable to have to take to avoid the disadvantage.”",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”, the governing board clearly agree that the permanent exclusion amounted to a failure to make reasonable adjustments.. They are agreeing that CHILD_NAME is <<SPECIFY THEIR PROTECTED CHARACTERISTIC>>, which is a disability for the purpose of the act, and that they have suffered a disadvantage because of being <<SPECIFY THEIR PROTECTED CHARACTERISTIC>> when compared to someone who is not disabled. The school has failed to make reasonable adjustments to accommodate this disability and mitigate the risk of permanent exclusion. Despite this the governing board decided to uphold the permanent exclusion anyway.",
+          "Therefore, by failing to reinstate CHILD_NAME they have made a decision that they had no lawful power to make. They have therefore acted beyond the scope of their lawful powers, and the IRP is asked to quash the decision and direct the governing board to reconsider.",
+          "Section 149 of the Equality Act 2010 describes the public sector equality duty.",
+          "At subsection 1, the Act states that: \n “A public authority must, in the exercise of its functions, have due regard to the need to— \n (a) eliminate discrimination, harassment, victimisation and any other conduct that is prohibited by or under this Act; \n (b) advance equality of opportunity between persons who share a relevant protected characteristic and persons who do not share it.”",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”, the governing board clearly agree that <<DESCRIPTION OF TYPE OF DISCRIMINATION>>. They are agreeing that CHILD_NAME is <<SPECIFY THEIR PROTECTED CHARACTERISTIC>> and that the school had a duty to take proactive steps as a result to foster equality of opportunity between them and young people who are not <<SPECIFY PROTECTED CHARACTERISTIC>>. However, these are steps that the school failed to take. Despite this, the governing board decided to uphold the permanent exclusion anyway.",
+          "Therefore, by failing to reinstate CHILD_NAME they have made a decision that they had no lawful power to make. They have therefore acted beyond the scope of their lawful powers, and the IRP is asked to quash the decision and direct the governing board to reconsider.",
+          "Section 27 of the Equality Act describes the act of victimisation: \n “(1) A person (A) victimises another person (B) if A subjects B to a detriment because— \n (a) B does a protected act, or \n (b) A believes that B has done, or may do, a protected act. \n (2) Each of the following is a protected act— \n (a) bringing proceedings under this Act; \n (b) giving evidence or information in connection with proceedings under this Act; \n (c) doing any other thing for the purposes of or in connection with this Act; \n (d) making an allegation (whether or not express) that A or another person has contravened this Act.”",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”, the governing board clearly agree that the school's behaviour amounts to victimisation against CHILD_NAME. Despite this, the governing board decided to uphold the permanent exclusion anyway.",
+          "Therefore, by failing to reinstate CHILD_NAME they have made a decision that they had no lawful power to make. They have therefore acted beyond the scope of their lawful powers, and the IRP is asked to quash the decision and direct the governing board to reconsider."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is unlawful (exclusion guidance)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's governing board was bound by the principles of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be reasonable.",
+          "In public law, 'lawfulness' describes the requirement that any decision the governing board takes must be one that they have the authority to make in law.",
+          "The governing board has declined to reinstate CHILD_NAME, instead upholding the permanent exclusion. This is despite the governing board acknowledging in the letter confirming their decision/the minutes of their deliberations that the headteacher's decision to exclude was not in accordance with the exclusion guidance because “<<QUOTE SHOWING THE GOVERNORS' REASONING THAT THE GUIDANCE WAS NOT MET>>”.",
+          "The governing board must have regard to the statutory exclusions guidance. The legal tests for exclusion it contain are binding on them. Where the governing board finds they have not been met, they do not have discretion to uphold the permanent exclusion anyway. They must reinstate CHILD_NAME in such circumstances.",
+          "By failing to do so, they have made a decision that they had no lawful power to make. They have therefore acted beyond the scope of their lawful powers, and the IRP is asked to quash the decision and direct them to reconsider."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Governing board's decision is unlawful (human rights)",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "Public law principles underpin good decision making. All decisions of a governing board must be made in accordance with public law. Panels are expected to understand the legislation that is relevant to suspensions and permanent exclusions and the legal principles that apply. Headteachers and governing board members of panels are likely to have first hand experience of the education context that may be relevant to considerations about whether a decision was reasonable in the circumstances.",
+        "reference": "Paragraph 226, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's governing board was bound by the principles of public law when considering CHILD_NAME's permanent exclusion, including that the decision must be reasonable.",
+          "In public law, 'lawfulness' describes the requirement that any decision the governing board takes must be one that they have the authority to make in law.",
+          "The governing board has declined to reinstate CHILD_NAME, instead upholding the permanent exclusion. This is despite the governing board acknowledging in the letter confirming their decision/the minutes of their deliberations that the headteacher's decision to exclude was not in accordance with the requirements of the Human Rights Act 1998. This can be seen in their finding that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”. This means that the exclusion amounted to a breach of <<SPECIFY THE HUMAN RIGHTS PROVISION THAT HAS BEEN BREACHED>> as defined by the European Convention on Human Rights.",
+          "Article 8 of the European Convention on Human Rights states that: \n “1. Everyone has the right to respect for his private and family life, his home and his correspondence. 2. There shall be no interference by a public authority with the exercise of this right except such as is in accordance with the law and is necessary in a democratic society in the interests of national security, public safety or the economic well-being of the country, for the prevention of disorder or crime, for the protection of health or morals, or for the protection of the rights and freedoms of others.”",
+          "The 2009 High Court case of LG (by their mother and litigation friend V) v Independent Review Panel for Tom Hood School discussed the issue of whether an exclusion can “engage” a person's rights under Article 8 of the ECHR. The Court found that: \n “I readily accept that there may be cases in which the permanent exclusion of a pupil from, say, the only school in an area which he or she had attended for years could engage Article 8 rights.”",
+          "Where Article 8 rights are engaged, it means that the young person is protected from arbitrary or disproportionate interference with their private and family life. While not every exclusion will engage a person's Article 8 rights, any that has a particularly severe impact on a young person's relationship to friends or family and the stigma they carry by association with the exclusion will engage these rights.",
+          "Therefore, by stating that “<<QUOTE FINDING OF THE GOVERNORS THAT SHOWS THEIR AGREEMENT THAT THE EXCLUSION WAS UNLAWFUL>>”, the governing board clearly agrees that the exclusion amounted to an impact on CHILD_NAME's life which constitutes a breach of Article 8. The result is that they would have to satisfy themselves that the infringement with that right is proportionate to a lawful aim, which is a question they have not been able to satisfy themselves.",
+          "Despite this, the governing board decided to uphold the exclusion anyway. This was therefore an unlawful decision, and the IRP is invited to quash it and direct reconsideration."
+        ]
+      }
+    }
+  }
+]

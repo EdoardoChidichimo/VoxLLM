@@ -1,0 +1,651 @@
+[
+  {
+    "title": "Exclusion for a non-disciplinary reason",
+    "relevant_guidance": ["Exclusion Guidance"],
+    "relevant_excerpts": [
+      {
+        "content": "Only the headteacher of a school can suspend or permanently exclude a pupil on disciplinary grounds.",
+        "reference": "Paragraph 1, Exclusion Guidance"
+      },
+      {
+        "content": "It would also be unlawful to exclude a pupil simply because they have SEN or a disability that the school feels it is unable to meet, or for a reason such as, academic attainment/ability; or the failure of a pupil to meet specific conditions before they are reinstated, such as to attend a reintegration meeting.",
+        "reference": "Paragraph 20, Exclusion Guidance"
+      },
+      {
+        "content": "Excluding children from school for non-disciplinary reasons is unlawful.",
+        "reference": "Page 4, House of Commons Library Briefing Paper: Off-rolling in English schools."
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If stated reason is non-disciplinary": [
+          "The reason the headteacher gave in their letter of <<EXCLUSION_LETTER_DATE>> confirming <<CHILD_NAME>>'s exclusion was <<EXCLUSION_REASON>>.",
+          "This is not a valid reason to exclude a young person as it is not a matter of discipline. It does not relate to a breach of the school's behaviour policy. Therefore, it is not within the headteacher's lawful powers to exclude <<CHILD_NAME>> as a result of this incident. Excluding due to a non-disciplinary reason is a form off-rolling and it is unlawful. The headteacher has therefore acted outside the scope of their lawful power and we ask the governors to reinstate <<CHILD_NAME>> with immediate effect."
+        ],
+        "If stated reason is disciplinary but true reason is non-disciplinary": [
+          "The reason the headteacher gave in their letter of <<EXCLUSION_LETTER_DATE>> confirming <<CHILD_NAME>>'s exclusion was <<EXCLUSION_REASON>>.",
+          "However, the headteacher has said in the letter that <<QUOTE SHOWING ALTERNATIVE MOTIVATION>>.",
+          "This reveals a motivation for the exclusion that is not reflected in the letter confirming the permanent exclusion. This is not a valid reason to exclude a young person as it is not a matter of discipline. It does not relate to a breach of the school's behaviour policy. Therefore, it is not within the headteacher's lawful powers to exclude <<CHILD_NAME>> as a result of this incident. The headteacher has therefore acted outside the scope of their lawful power and we ask the governors to reinstate <<CHILD_NAME>> with immediate effect.",
+          "If the governors do not agree that this exclusion has not been imposed for non-disciplinary reasons, we ask the governors to keep in mind the principal of procedural fairness that justice must not just be done but be unequivocally seen to be done. Clearly, in this instance, the headteacher has expressed an alternative, unlawful, influence on their decision making and justice cannot been seen to be done, because the family can see that the headteacher's decision has been adversely influenced by inappropriate factors. Therefore, we still urge the governors to reinstate <<CHILD_NAME>>."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Exclusion is disproportionate",
+    "relevant_guidance": ["Exclusion Guidance", "Behavioural Advice"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "In considering whether a sanction is reasonable in all circumstances, one must consider whether it is proportionate in the circumstances of the case and consider any special circumstances relevant to its imposition including the pupil's age, any special educational needs or disability they may have, and any religious requirements affecting them.",
+        "reference": "Page 18, Behavioural Advice"
+      },
+      {
+        "content": "Where appropriate, staff should take account of any contributing factors that are identified after a behaviour incident has occurred: for example, if the pupil has suffered bereavement, experienced abuse or neglect, has mental health needs, has been subject to bullying, has needs including SEND (including any not previously identified), has been subject to criminal exploitation, or is experiencing significant challenges at home.",
+        "reference": "Page 16, Behavioural Advice"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If child does not have relevant vulnerabilities": [
+          "To uphold <<CHILD_NAME>>'s exclusion, the governors must be satisfied that the behaviour they are accused of is so serious that the inevitable, fundamental personal upheaval it will cause for <<CHILD_NAME>> is justified.",
+          "We submit that <<CHILD_NAME>>'s behaviour does not satisfy this test. Whilst it is acknowledged that there have been behavioural incidents that the school will want to address, this constitutes relatively minor infractions of the school's behaviour policy. This does not warrant the most serious sanction a school can use.",
+          "To uphold the exclusion, the governors must ensure that it will not have a disproportionate impact on the young person. This means that the negative effects of the exclusion should not outweigh the benefits.",
+          "We submit that the impact on <<CHILD_NAME>> will be fundamental and profound, with consequences that will likely affect them for many years to come. It is well understood that exclusion has broad and lasting effects. Specifically, an exclusion:",
+          " - Makes a young person more vulnerable to criminal gangs, with the Home Office, Children's Commissioner, Ofsted and Children's Society identifying that children out of mainstream education are more susceptible to being criminally exploited, or becoming involved in violent crime as either victim or perpetrator",
+          " - Severely harms a young person's academic prospects and onward transition into adulthood",
+          " - Undermines a young person's mental health. Children in pupil referral units begin school refusing at an increased rate, and report social isolation as well as feelings of anxiety, frustration and low mood",
+          "Proportionality in public law means that any sanction imposed by an administrative body must be proportional to the alleged infraction. If a lesser sanction would be sufficient, a greater one would be considered disproportionate and should not be pursued. Put simply, even if a permanent exclusion is reasonable, if it is one of multiple reasonable responses to the student's behaviour, then the least severe must be applied.",
+          "In this instance, there are less severe options available to the school.",
+          "We therefore submit that the decision to permanently exclude young person was disproportionate and the governors should now reinstate them with immediate effect.",
+          "The school has failed to properly consider any contributing factors for CHILD_NAME's behaviour."
+        ],
+        "If child does have relevant vulnerabilities": [
+        "To uphold <<CHILD_NAME>>'s exclusion, the governors must be satisfied that the behaviour they are accused of is so serious that the inevitable, fundamental personal upheaval it will cause for <<CHILD_NAME>> is justified.",
+          "We submit that <<CHILD_NAME>>'s behaviour does not satisfy this test. Whilst it is acknowledged that there have been behavioural incidents that the school will want to address, this constitutes relatively minor infractions of the school's behaviour policy. This does not warrant the most serious sanction a school can use.",
+          "To uphold the exclusion, the governors must ensure that it will not have a disproportionate impact on the young person. This means that the negative effects of the exclusion should not outweigh the benefits.",
+          "We submit that the impact on <<CHILD_NAME>> will be fundamental and profound, with consequences that will likely affect them for many years to come. It is well understood that exclusion has broad and lasting effects. Specifically, an exclusion:",
+          " - Makes a young person more vulnerable to criminal gangs, with the Home Office, Children's Commissioner, Ofsted and Children's Society identifying that children out of mainstream education are more susceptible to being criminally exploited, or becoming involved in violent crime as either victim or perpetrator",
+          " - Severely harms a young person's academic prospects and onward transition into adulthood",
+          " - Undermines a young person's mental health. Children in pupil referral units begin school refusing at an increased rate, and report social isolation as well as feelings of anxiety, frustration and low mood",
+          "In addition, <<CHILD_NAME>> has particular vulnerabilities which would make an exclusion particularly harmful. These include <<RELEVANT VULNERABILITIES>>.",
+          "Proportionality in public law means that any sanction imposed by an administrative body must be proportional to the alleged infraction. If a lesser sanction would be sufficient, a greater one would be considered disproportionate and should not be pursued. Put simply, even if a permanent exclusion is reasonable, if it is one of multiple reasonable responses to the student's behaviour, then the least severe must be applied.",
+          "In this instance, there are less severe options available to the school.",
+          "We therefore submit that the decision to permanently exclude young person was disproportionate and the governors should now reinstate them with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Exclusion of a pupil from an ethnic minority background",
+    "relevant_guidance": ["Exclusion Guidance"],
+    "relevant_excerpts": [
+      {
+        "content": "Under the Equality Act 2010 (the Equality Act) and the Equality Act 2010: advice for schools - GOV.UK (www.gov.uk), schools must not discriminate against, harass, or victimise pupils because of their: sex; race; disability; religion or belief; sexual orientation; pregnancy/maternity; or gender reassignment.",
+        "reference": "Duties under the Equality Act 2010 and Children and Families Act 2014, Exclusion Guidance"
+      },
+      {
+        "content": "In carrying out their functions, the public sector equality duty means schools must also have due regard to the need to: \n eliminate discrimination, harassment, victimisation, and other conduct that is prohibited by the Equality Act; \n advance equality of opportunity between people who share a relevant protected characteristic and people who do not; and \n foster good relations between people who share a relevant protected characteristic and people who do not share it.",
+        "reference": "Duties under the Equality Act 2010 and Children and Families Act 2014, Exclusion Guidance"
+      },
+      {
+        "content": "There are longstanding national trends which show that particular groups of children are more likely to be excluded from school, both for a suspension or permanent exclusion. All of these factors will differ for each child, and the influence of out-of-school factors will vary according to local context, so it is important that schools, local authorities and local partners work together to understand what lies behind local trends. Local leaders will be best placed to effectively plan and put in place additional and targeted action based on their own context. If they identify any gaps, they are also in the position to act to ensure those who work with children have the training, services and support they need to address these.",
+        "reference": "Paragraph 53, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The school's public sector equality duty mandates that they will advance equality of opportunity between members of different groups with a relevant protected characteristic. This is a positive duty and requires that the school take proactive steps. This requires that the school, in certain circumstances, treat “some persons more favourably than others”."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Exclusion will have significant impact on the young person",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "To uphold the exclusion, the governing board must satisfy themselves that the exclusion will not have a disproportionate impact on <<CHILD_NAME>>; that is to say, that the benefits of the exclusion are not outweighed by the harm that it will do to them.",
+          "We submit that the impact on <<CHILD_NAME>> will be fundamental and profound, with consequences that will likely affect them for many years to come. It is well understood that exclusion has broad and lasting effects. Specifically, an exclusion:",
+          " - Makes a young person more vulnerable to criminal gangs, with the Home Office, Children's Commissioner, Ofsted and Children's Society identifying that children out of mainstream education are more susceptible to being criminally exploited, or becoming involved in violent crime as either victim or perpetrator",
+          " - Severely harms a young person's academic prospects and onward transition into adulthood",
+          " - Undermines a young person's mental health. Children in pupil referral units begin school refusing at an increased rate, and report social isolation as well as feelings of anxiety, frustration and low mood",
+          "Clearly, these are significant impacts that must be factored in when deciding to exclude <<CHILD_NAME>>. The headteacher has failed to show that the exclusion is proportionate, and therefore the governing board should reinstate <<CHILD_NAME>>."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Failure to identify and/or consider SEND",
+    "relevant_guidance": ["Exclusion Guidance", "Behavioural Advice"], 
+    "relevant_excerpts": [
+      {
+        "content": "The Equality Act 2010 requires schools to make reasonable adjustments for disabled pupils. This duty can, in principle, apply both to the suspensions and permanent exclusions process and to the disciplinary sanctions imposed. Under the Children and Families Act 2014, governing boards of relevant settings must use their 'best endeavours' to ensure the appropriate special educational provision is made for pupils with SEN, which will include any support in relation to behaviour management that they need because of their SEN.",
+        "reference": "Paragraph 54, Exclusion Guidance"
+      },
+      {
+        "content": "Schools should engage proactively with parents in supporting the behaviour of pupils with additional needs.",
+        "reference": "Paragraph 55, Exclusion Guidance"
+      },
+      {
+        "content": "Where a school has concerns about the behaviour, or risk of suspension and permanent exclusion, of a pupil with SEN, a disability or an EHC plan it should, in partnership with others (including where relevant, the local authority), consider what additional support or alternative placement may be required. This should involve assessing the suitability of provision for a pupil's SEN or disability.",
+        "reference": "Paragraph 56, Exclusion Guidance"
+      },
+      {
+        "content": "Schools must also ensure that any provision, criterion, or practice does not discriminate against pupils by unfairly increasing their risk of exclusion. For example, if reasonable adjustments have not been made for a pupil with a disability that can manifest itself in breaches of school rules if needs are not met, a decision to exclude may be discriminatory.",
+        "reference": "Duties under the Equality Act 2010 and Children and Families Act 2014, Exclusion Guidance"
+      },
+      {
+        "content": "The governing board must also comply with their statutory duties in relation to pupils with SEN when administering the exclusion process, including (in the case of the governing board of relevant settings) using their 'best endeavours' to ensure the appropriate special educational provision is made for pupils with SEN and (for all settings) having regard to the Special Educational Need and Disability (SEND) Code of Practice.",
+        "reference": "Duties under the Equality Act 2010 and Children and Families Act 2014, Exclusion Guidance"
+      },
+      {
+        "content": "Some behaviours are more likely be associated with particular types of SEND, such as a pupil with speech, language and communication needs who may not understand a verbal instruction. Behaviour will often need to be considered in relation to a pupil's SEND, although it does not follow that every incident of misbehaviour will be connected to their SEND.",
+        "reference": "Page 13, Behavioural Advice"
+      },
+      {
+        "content": "Schools need to manage pupil behaviour effectively, whether or not the pupil has underlying needs. When a pupil is identified as having SEND, the graduated approach should be used to assess, plan, deliver and then review the impact of the support being provided.",
+        "reference": "Page 14, Behavioural Advice"
+      },
+      {
+        "content": "When considering excluding a pupil, schools should consider any contributing factors that are identified after an incident of poor behaviour has occurred, which could include where the pupil has mental health problems.",
+        "reference": "Paragraph 3.15, Mental health and behaviour in schools"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "<<CHILD_NAME>> has special educational needs which exhibit themselves as <<RELEVANT BEHAVIOURS>>.",
+          "The school was aware of this yet failed to take effective action to mitigate the risk of exclusion, and help <<CHILD_NAME>> to engage effectively with their education.",
+          "The exclusion has not been used as a last resort and we ask the Governors now to reinstate <<CHILD_NAME>>."
+        ]
+      }
+    }
+  },
+  {
+    "title": "The breach was not serious enough or not in a pattern of persistent breaches",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "A permanent exclusion is when a pupil is no longer allowed to attend a school (unless the pupil is reinstated). The decision to exclude a pupil permanently should only be taken: \n in response to a serious breach or persistent breaches of the school's behaviour policy; and \n where allowing the pupil to remain in school would seriously harm the education or welfare of the pupil or others such as staff or pupils in the school.",
+        "reference": "Paragraph 11, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If the EXCLUSION_REASON_LLM was for a serious breach": [
+          "CHILD_NAME has been permanently excluded for EXCLUSION_REASON_LLM. We do not seek to suggest that this is not a breach of the school's behaviour policy, or that some action from the school would not be appropriate.",
+          "However, the first limb of paragraph 11 sets a high bar for severity to represent the hugely significant impact that permanent exclusion will have on CHILD_NAME. The school must, to satisfy this limb, be able to show that the incident was so severe that no other disciplinary, pastoral or welfare response would be appropriate.",
+          "The allegation against CHILD_NAME does not meet this high threshold. It is a misdemeanour which can be satisfactorily addressed whilst keeping them in school.",
+          "Therefore, it is submitted that the school has failed to satisfy the first limb of the test at paragraph 11 and CHILD_NAME should be reinstated with immediate effect."
+        ],
+        "If the EXCLUSION_REASON_LLM was for persistent breaches but they were not serious enough": [
+          "CHILD_NAME has been permanently excluded for persistent disruptive behaviour. We do not seek to suggest that there have been no breaches of the school's behaviour policy or that some action from the school would be appropriate.",
+          "However, the first limb of the test at paragraph 11 requires a sustained pattern of behaviour which is significant enough to warrant the most severe sanction a school can employ, and to be proportionate to the significant impact this will have on CHILD_NAME.",
+          "These incidents do not meet the high threshold required to justify a permanent exclusion.",
+          "We therefore submit to the governors that the headteacher has not met the first part of the test outlined in paragraph 11 and has thus acted beyond their lawful powers. The governors should, therefore, rescind the exclusion immediately."
+        ],
+        "If the EXCLUSION_REASON_LLM was for persistent breaches but they were not persistent": [
+          "CHILD_NAME has been permanently excluded for EXCLUSION_REASON_LLM. We do not seek to suggest that this is not a breach of the school's behaviour policy, or that some action from the school would not be appropriate.",
+          "However, the first limb of paragraph 11 sets a high bar for severity to represent the hugely significant impact that permanent exclusion will have on CHILD_NAME. The school must, to satisfy this limb, be able to show that the incident was so severe that no other disciplinary, pastoral or welfare response would be appropriate.",
+          "These incidents do not meet the threshold. At their most serious, they are misdemeanours which can be satisfactorily addressed whilst keeping CHILD_NAME in school. They are also not regular, numerous or sustained enough to be described as persistent, they are punctuated by significant periods of positive engagement by CHILD_NAME.",
+          "We therefore submit to the governors that the headteacher has not satisfied the first limb of the test at paragraph 11 and therefore not acted within the scope of their lawful powers. The governors should therefore rescind the permanent exclusion with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "The headteacher converted/extended the exclusion",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "The law does not allow for extending a suspension or 'converting' a suspension into a permanent exclusion. In exceptional cases, usually where further evidence has come to light, a further suspension may be issued to begin immediately after the first suspension ends; or a permanent exclusion may be issued to begin immediately after the end of the suspension.",
+        "reference": "Paragraph 10, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "No new information has come to light to justify the conversion/extension  of the suspension that could not have been discovered before implementing the suspension in the first place. Certainly, there are no “exceptional” circumstances which would justify this action. For clarity, this would require something truly out of the ordinary, and does not allow a school to hold a child off-site with one suspension whilst they investigate the matter.",
+          "Therefore, it is clear that the suspension has been converted/extended, and is therefore unlawful. The governors are asked to reinstate CHILD_NAME with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "The headteacher did not give reasons for the exclusion",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Whenever a headteacher suspends or permanently excludes a pupil they must, without delay, notify parents or the excluded pupil (if they are 18 years or older) of the period of the suspension or permanent exclusion and the reason(s) for it.",
+        "reference": "Paragraph 63, Exclusion Guidance"
+      },
+      {
+        "content": "They must also, without delay, after their decision, provide parents with the following information in writing: the reason(s) for the suspension or permanent exclusion.",
+        "reference": "Paragraph 64, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "The letter does not provide any clarity or detail as to how the headteacher has reached their decision. This is a serious procedural error and has left the family without any way to understand the reasons for the exclusion.",
+          "This procedural flaw undermines the headteacher's decision-making process and makes it inevitable that the process of challenging the exclusion is tilted irrevocably in favour of the school. Therefore, the governing board must conclude that the process has been unfair and reinstate CHILD_NAME with immediate effect."      
+        ]
+      }
+    }
+  },
+  {
+    "title": "The pupil is a looked-after child or a previously looked-after child",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "For children with a social worker, education is an important protective factor, providing a safe space for children to receive support, be visible to professionals and realise their potential. When children are not in school, they miss the protection and opportunities it can provide, and become more vulnerable to harm. Headteachers should balance this important reality with the need to ensure calm and safe environments for all pupils and staff, so should devise strategies that take both of these aspects into account.",
+        "reference": "Paragraph 58, Exclusion Guidance"
+      },
+      {
+        "content": "Where a looked-after child (LAC) is likely to be subject to a suspension or permanent exclusion, the Designated Teacher (DT) should contact the local authority's VSH as soon as possible. The VSH, working with the DT and others, should consider what additional assessment and support need to be put in place to help the school address the factors affecting the child's behaviour and reduce the need for suspension or permanent exclusion. Where relevant, the school should also engage with a child's social worker, foster carers, or children's home workers.",
+        "reference": "Paragraph 60, Exclusion Guidance"
+      },
+      {
+         "content": "All looked-after children should have a Personal Education Plan (PEP) which is part of the child's care plan or detention placement plan. 40 This should be reviewed every term and any concerns about the pupil's behaviour should be recorded, as well as how the pupil is being supported to improve their behaviour and reduce the likelihood of exclusion.",
+        "reference": "Paragraph 61, Exclusion Guidance"
+      },
+      {
+        "content": "Where previously looked-after children face the risk of being suspended or permanently excluded, the school should engage with the child's parents and the school's DT. The school may also seek the advice of the VSH on strategies to support the pupil.",
+       "reference": "Paragraph 62, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "Looked-after children and previously looked-after children are one of the most vulnerable groups in society. As such, the governors must satisfy themselves that the circumstances around this exclusion are truly exceptional to warrant the permanent exclusion of such a vulnerable young person."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Pupil is a victim of direct discrimination",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Under the Equality Act 2010 (the Equality Act) and the Equality Act 2010: advice for schools, schools must not discriminate against, harass, or victimise pupils because of their: sex; race; disability; religion or belief; sexual orientation; pregnancy/maternity; or gender reassignment. For disabled children, this includes a duty to make reasonable adjustments to any provision, criterion or practice which puts them at a substantial disadvantage, and the provision of auxiliary aids and services.",
+        "reference": "Part two, Exclusion Guidance"
+      },
+      {
+        "content": "Direct discrimination occurs when one person treats another less favourably, because of a protected characteristic, than they treat - or would treat - other people. This describes the most clear-cut and obvious examples of discrimination - for example if a school were to refuse to let a pupil be a prefect because she is a lesbian.",
+        "reference": "Paragraph 1.17, Equality Act 2010: advice for schools"
+      },
+      {
+        "content": "A change for schools in this Act is that there can no longer be justification for direct discrimination in any circumstances. Under the DDA schools could justify some direct discrimination - if was a proportionate means of meeting a legitimate aim. What the change means is that if a school discriminates against a person purely because of his or her disability (even if they are trying to achieve a legitimate aim) then it would be unlawful discrimination as there can be no justification for their actions.",
+        "reference": "Paragraph 4.8, Equality Act 2010: advice for schools"
+      },
+      {
+        "content": "In order for someone to show that he or she has been directly discriminated against, he or she must compare what has happened to him or her to the treatment that a person without his or her protected characteristic is receiving, or would receive. So a gay pupil cannot claim that excluding him for fighting is direct discrimination because of sexual orientation unless he can show that a straight or bisexual pupil would not be excluded for fighting.",
+        "reference": "Paragraph 5.5, Equality and Humans Rights Commission - Technical guidance for schools in England"
+      },
+      {
+        "content": "A pupil does not need to find an actual person with whom to compare his or her treatment, but can rely on a 'hypothetical comparator' if he or she can show that there is evidence that such a person would be treated differently. Constructing a hypothetical comparator may involve considering elements of the treatment of several people whose circumstances are similar to those of the pupil, but not the same. Looking at these elements together, a court may conclude that the pupil was less favourably treated because of a protected characteristic than a hypothetical comparator without that characteristic would have been treated.",
+        "reference": "Paragraph 5.6, Equality and Humans Rights Commission - Technical guidance for schools in England"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "Suspected direct discrimination": [
+          "CHILD_NAME is <<PROTECTED CHARACTERISTIC>> which is a protected characteristic.",
+          "The headteacher has been influenced to exclude CHILD_NAME because they are <<PROTECTED CHARACTERISTIC>>.",
+          "This is evidenced in <<PIECE OF EVIDENCE>> which records that <<“QUOTE FROM EVIDENCE”>>.",
+          "This clearly evidences an intent to exclude CHILD_NAME, or at least an unwillingness to mitigate the risk of exclusion, because of CHILD_NAME being <<PROTECTED CHARACTERISTIC>>, a protected characteristic under the Equality Act. We submit that, on the balance of probabilities, a person who did not share this characteristic, where all other circumstances are equal, would not have been excluded.",
+          "Therefore, the exclusion resulted from direct discrimination and CHILD_NAME should be reinstated with immediate effect." 
+        ]
+      }
+    }
+  },
+  {
+    "title": "Pupil is a victim of indirect discrimination",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Under the Equality Act 2010 (the Equality Act) and the Equality Act 2010: advice for schools, schools must not discriminate against, harass, or victimise pupils because of their: sex; race; disability; religion or belief; sexual orientation; pregnancy/maternity; or gender reassignment. For disabled children, this includes a duty to make reasonable adjustments to any provision, criterion or practice which puts them at a substantial disadvantage, and the provision of auxiliary aids and services.",
+        "reference": "Part two, Exclusion Guidance"
+      },
+      {
+        "content": "Schools must also ensure that any provision, criterion, or practice does not discriminate against pupils by unfairly increasing their risk of exclusion. For example, if reasonable adjustments have not been made for a pupil with a disability that can manifest itself in breaches of school rules if needs are not met, a decision to exclude may be discriminatory.",
+        "reference": "Part two, Exclusion Guidance"
+      },
+      {
+        "content": "Indirect discrimination occurs when a “provision, criterion or practice” is applied generally but has the effect of putting people with a particular characteristic at a disadvantage when compared to people without that characteristic. An example might be holding a parents' meeting on a Friday evening, which could make it difficult for observant Jewish parents to attend. It is a defence against a claim of indirect discrimination if it can be shown to be “a proportionate means of achieving a legitimate aim”. This means both that the reason for the rule or practice is legitimate, and that it could not reasonably be achieved in a different way which did not discriminate.",
+        "reference": "Paragraph 1.18, Equality Act 2010: advice for schools"
+      },
+      {
+        "content": "A school must not do something which applies to all pupils but which is more likely to have an adverse effect on disabled pupils only - for example having a rule that all pupils must demonstrate physical fitness levels before being admitted to the school - unless they can show that it is done for a legitimate reason, and is a proportionate way of achieving that legitimate aim.",
+        "reference": "Paragraph 4.9, Equality Act 2010: advice for schools"
+      },
+      {
+        "content": "Indirect discrimination will occur if all of the following four conditions are met. \n A school applies (or would apply) the provision, criterion or practice equally to all relevant pupils, including a particular pupil with a protected characteristic. \n The provision, criterion or practice puts, or would put, pupils sharing a protected characteristic at a particular disadvantage compared to relevant pupils who do not share that characteristic. \n The provision, criteria, practice or rule puts, or would put, the particular pupil at that disadvantage. \n The school cannot show that the provision, criteria or practice is justified as a 'proportionate means of achieving a legitimate aim'.",
+        "reference": "Paragraph 5.25, Equality and Humans Rights Commission - Technical guidance for schools in England"
+      },
+      {
+        "content": "'Disadvantage' is not defined in the Act. It could include denial of an opportunity or choice, deterrence, rejection or exclusion. The courts have found that 'detriment', a similar concept, is something about which a reasonable person would complain - so an unjustified sense of grievance would not amount to a disadvantage. A disadvantage does not have to be quantifiable and the pupil does not have to experience actual loss. It is enough that the pupil can reasonably say that he or she would have preferred to be treated differently.",
+        "reference": "Paragraph 5.21, Equality and Humans Rights Commission - Technical guidance for schools in England"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "Suspected indirect discrimination": [
+          "CHILD_NAME is <<PROTECTED CHARACTERISTIC>> which is a protected characteristic.",
+          "We are not submitting that the school has directly discriminated against young person, but instead that by applying the same policies and practices equally to them, they have been severely disadvantaged as a result of their protected characteristic.",
+          "This submission is best explained by setting out the test at section 19 of the Equality Act as a series of questions and answering each in turn.",
+          "The first question is: has young person been subject to a provision, criterion or practice that would apply to persons who are not <<PROTECTED CHARACTERISTIC>>?",
+          "The second question is: has the application of these policies/practices disadvantaged CHILD_NAME as a result of their being <<PROTECTED CHARACTERISTIC>>, in a way that they would not disadvantage a person who was not <<PROTECTED CHARACTERISTIC>>?",
+          "The last question is whether this disadvantage is justified by being a proportionate means of achieving a legitimate aim?",
+          "It is acknowledged that good behaviour in school is a legitimate aim and that, logically, removing young people exhibiting behavioural difficulties is likely to reduce disturbances in the learning environment.",
+          "However, in assessing proportionality in the context of the Equality Act, the governors must not only consider the personal impact on CHILD_NAME. The governors must also consider the inherent injustice that exists in the fact that CHILD_NAME is more likely to be excluded because they are <<PROTECTED CHARACTERISTIC>>. There must therefore be a very compelling case from the school to warrant this. The test requires that that the young person must be disadvantaged because no plausible alternative for achieving a legitimate aim exists.",
+          "We submit to the governors that the school has failed to satisfy this test, and the discrimination against young person is therefore unlawful." 
+        ]
+      }
+    }
+  },
+  {
+    "title": "Public Sector Equality Duty not satisfied",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Under the Equality Act 2010 (the Equality Act) and the Equality Act 2010: advice for schools, schools must not discriminate against, harass, or victimise pupils because of their: sex; race; disability; religion or belief; sexual orientation; pregnancy/maternity; or gender reassignment. In carrying out their functions, the public sector equality duty means schools must also have due regard to the need to: \n - eliminate discrimination, harassment, victimisation, and other conduct that is prohibited by the Equality Act; \n - advance equality of opportunity between people who share a relevant protected characteristic and people who do not; and \n - foster good relations between people who share a relevant protected characteristic and people who do not share it. \n These duties need to be complied with when deciding whether to exclude a pupil. Schools must also ensure that any provision, criterion, or practice does not discriminate against pupils by unfairly increasing their risk of exclusion. For example, if reasonable adjustments have not been made for a pupil with a disability that can manifest itself in breaches of school rules if needs are not met, a decision to exclude may be discriminatory.",
+        "reference": "Part 2, Exclusion Guidance"
+      },
+      {
+        "content": "With the PSED, as with the previous general duties, schools are subject to the need to have due regard to the three elements outlined above. What having “due regard” means in practice has been defined in case law and means giving relevant and proportionate consideration to the duty. For schools this means: \n - Decision makers in schools must be aware of the duty to have “due regard” when making a decision or taking an action and must assess whether it may have particular implications for people with particular protected characteristics. \n - Schools should consider equality implications before and at the time that they develop policy and take decisions, not as an afterthought, and they need to keep them under review on a continuing basis. \n - The PSED has to be integrated into the carrying out of the school's functions, and the analysis necessary to comply with the duty has to be carried out seriously, rigorously and with an open mind - it is not just a question of ticking boxes or following a particular process. Schools can't delegate responsibility for carrying out the duty to anyone else.",
+        "reference": "Paragraph 5.4, Equality Act 2010: advice for schools"
+      },
+      {
+         "content": "It is good practice for schools to keep a written record to show that they have actively considered their equality duties and asked themselves relevant questions. There is no legal requirement to produce a formal equality impact assessment document, although for key decisions this might be a helpful tool.",
+        "reference": "Paragraph 5.6, Equality Act 2010: advice for schools"
+      },
+      {
+        "content": "The specific duties require schools: \n a) to publish information to demonstrate how they are complying with the Public Sector Equality Duty, and \n b) to prepare and publish equality objectives. \n By 6 April 2012 schools were obliged to publish their initial information and first set of objectives demonstrating how it complies with the general duty. School have to update the published information at least annually and to publish objectives at least once every four years.",
+       "reference": "Paragraph 5.11, Equality Act 2010: advice for schools"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "CHILD_NAME is <<PROTECTED CHARACTERISTIC>> which is a protected characteristic.",
+          "This is a vulnerable group of young people, and yet the school has failed to show that they have proactively pursued policies and practices which foster equality of opportunity between people who are <<PROTECTED CHARACTERISTIC>>, and people who are not.",
+          "The school has therefore failed to satisfy its public sector equality duty and CHILD_NAME should be reinstated with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Pupil is suffering from exploitation",
+    "relevant_guidance": ["Exclusion Guidance", "Behavioural Advice"], 
+    "relevant_excerpts": [
+      {
+        "content": "Whilst an exclusion may still be an appropriate sanction, the headteacher should also take account of any contributing factors identified after an incident of misbehaviour has occurred.",
+        "reference": "Paragraph 4, Exclusion Guidance"
+      },
+      {
+        "content": "Where appropriate, staff should take account of any contributing factors that are identified after a behaviour incident has occurred: for example, if the pupil has suffered bereavement, experienced abuse or neglect, has mental health needs, has been subject to bullying, has needs including SEND (including any not previously identified), has been subject to criminal exploitation, or is experiencing significant challenges at home.",
+        "reference": "Page 16, Behavioural Advice"
+      },
+      {
+         "content": "There is a relationship between school exclusion and child exploitation. Causality is less clear, but the relationship between the two is important. Permanent school exclusion can act as an escalation of risk on a pathway where risk is already likely to have been evident. Attending school full time can be a protective factor. Preventing exclusion reduces the risks around child exploitation.",
+        "reference": "Introduction, Excluded or missing from education and child exploitation"
+      },
+      {
+        "content": "The behaviours demonstrated because of being at risk of exploitation may be the same behaviours that put a child at risk of school exclusion. In decisions around exclusions, safeguarding and behavioural policies can be seen as being at odds, with behavioural policies often prioritised. As well as requiring schools to consider mitigating circumstances, safeguarding considerations could be made a part of the decision-making framework for school exclusion.",
+       "reference": "Introduction, Excluded or missing from education and child exploitation"
+      },
+      {
+        "content": "Some of the following can be indicators of both child criminal and sexual exploitation where children: \n - appear with unexplained gifts, money or new possessions \n - associate with other children involved in exploitation \n - suffer from changes in emotional well-being \n - misuse alcohol and other drugs \n - go missing for periods of time or regularly come home late, and \n - regularly miss school or education or do not take part in education.",
+        "reference": "Pages 149-150, Keeping children safe in education"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "Suspected child exploitation": [
+          "The school has not duly considered if CHILD_NAME has been a victim of criminal and/or sexual exploitation. It is key that schools consider if there are criminal and/or sexual exploitation risks, in line with their safeguarding duties, and it will also be relevant to the decision to exclude. It is clear that the behaviours demonstrated because of being at risk of exploitation may be the same behaviours that put a child at risk of school exclusion. Therefore, the objective of preventing misbehaviour can be achieved by breaking the link between CHILD_NAME and their exploiter/s. An exclusion will only exacerbate these problems.",
+          "If the school fail to explore if the student's behaviour results from exploitation, and fail to engage in productive efforts to end the ongoing exploitation, then the exclusion cannot be said to be a last resort, and the school will have failed in its duty contained at paragraph 44 of the DfE school exclusion guidance to account for contributing factors."
+        ]
+      }
+    }
+  },
+  {
+    "title": "School failed to conduct a fair investigation",
+    "relevant_guidance": ["Exclusion Guidance", "Behavioural Advice"], 
+    "relevant_excerpts": [
+      {
+        "content": "Any decision of a headteacher, including suspension or permanent exclusion, must be made in line with the principles of administrative law, i.e. that it is: lawful (with respect to the legislation relating directly to suspensions and permanent exclusions and a school's wider legal duties); reasonable; fair; and proportionate.",
+        "reference": "Paragraph 2, Exclusion Guidance"
+      },
+      {
+        "content": "When establishing the facts in relation to a suspension or permanent exclusion decision the headteacher must apply the civil standard of proof, i.e. 'on the balance of probabilities' it is more likely than not that a fact is true, rather than the criminal standard of 'beyond reasonable doubt.' This means that the headteacher should accept that something happened if it is more likely that it happened than that it did not happen. The headteacher must take account of their legal duty of care when sending a pupil home following an exclusion.",
+        "reference": "Paragraph 3, Exclusion Guidance"
+      },
+      {
+         "content": "Headteachers should also take the pupil's views into account, considering these in light of their age and understanding, before deciding to exclude, unless it would not be appropriate to do so. They should inform the pupil about how their views have been factored into any decision made. Where relevant, the pupil should be given support to express their view, including through advocates such as parents or, if the pupil has one, a social worker. Whilst an exclusion may still be an appropriate sanction, the headteacher should also take account of any contributing factors identified after an incident of misbehaviour has occurred and consider paragraph 45 of the Behaviour in Schools guidance.",
+        "reference": "Paragraph 4, Exclusion Guidance"
+      },
+      {
+        "content": "The consistent and fair implementation of the measures outlined in the behaviour policy is central to an effective whole-school approach to behaviour. Consistent implementation helps to create a predictable environment. Some pupils may require additional support to meet a school's behaviour expectations. This support should be given consistently and predictably, applied fairly and only where necessary.",
+       "reference": "Page 10, Behavioural Advice"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "A headteacher must conduct a fair, balanced and dispassionate assessment of the facts before deciding to exclude a young person. The headteacher is bound by the public law principal of fairness in their decision making. This is made clear in the Exclusions Guidance at paragraph 2.",
+          "Fairness includes the right that a person is told of the case against them and given an opportunity to put their side of the story forward. In other words, a person has a right that their defence is fairly heard.",
+          "In addition, a public body making any decision about another person must be impartial and be seen to be impartial. This principle was explained in the case of R v Sussex Justices, ex parte McCarthy which was heard in 1924 in the King's Bench division. The Court found that: \n “a long line of cases shows that it is not merely of some importance, but is of fundamental importance that justice should not only be done, but should manifestly and undoubtedly be seen to be done”.",
+          "Before the headteacher decided to exclude CHILD_NAME, they <<SET OUT THE STEPS THE HEADTEACHER TOOK TO INVESTIGATE THE INCIDENT(S) THAT LED TO THE EXCLUSION>>. However, they failed to <<SET OUT THE STEPS THE HEADTEACHER SHOULD HAVE TAKEN BUT DIDN'T>>.",
+          "The headteacher's failure to investigate the incident/incidents fairly and even-handedly means that CHILD_NAME's defence has not been fairly heard and, even if the governors do not conclude that there was bias against CHILD_NAME, the mere appearance of bias means that the decision is procedurally flawed.",
+          "This is a serious failing by the school. The right to a fair process is fundamental in any decision making but is particularly important in exclusion proceedings where the impact on CHILD_NAME will be so significant.",
+          "We therefore submit that the exclusion is procedurally flawed, and CHILD_NAME should be reinstated with immediate effect. "
+        ]
+      }
+    }
+  },
+  {
+    "title": "School failed to implement early and proactive intervention",
+    "relevant_guidance": ["Exclusion Guidance", "Behavioural Advice"], 
+    "relevant_excerpts": [
+      {
+        "content": "Schools should engage proactively with parents in supporting the behaviour of pupils with additional needs.",
+        "reference": "Paragraph 55, Exclusion Guidance"
+      },
+      {
+        "content": "Where a school has concerns about the behaviour, or risk of suspension and permanent exclusion, of a pupil with SEN, a disability or an EHC plan it should, in partnership with others (including where relevant, the local authority), consider what additional support or alternative placement may be required. This should involve assessing the suitability of provision for a pupil's SEN or disability.",
+        "reference": "Paragraph 56, Exclusion Guidance"
+      },
+      {
+         "content": "Where a pupil has an EHC plan, schools should contact the local authority about any behavioural concerns at an early stage and consider requesting an early annual review prior to making the decision to suspend or permanently exclude. For those with SEN but without an EHC plan, the school should review, with external specialists as appropriate, whether the current support arrangements are appropriate and what changes may be required. This may provide a point for schools to request an EHC assessment or a review of the pupil's current package of support.",
+        "reference": "Paragraph 57, Exclusion Guidance"
+      },
+      {
+        "content": "Where a pupil has a social worker, e.g. because they are the subject of a Child in Need Plan or a Child Protection Plan, and they are at risk of suspension or permanent exclusion, the headteacher should inform their social worker, the Designated Safeguarding Lead (DSL) and the pupil's parents to involve them all as early as possible in relevant conversations.",
+       "reference": "Paragraph 59, Exclusion Guidance"
+      },
+      {
+        "content": "Where a looked-after child (LAC) is likely to be subject to a suspension or permanent exclusion, the Designated Teacher (DT) should contact the local authority's VSH as soon as possible. The VSH, working with the DT and others, should consider what additional assessment and support need to be put in place to help the school address the factors affecting the child's behaviour and reduce the need for suspension or permanent exclusion. Where relevant, the school should also engage with a child's social worker, foster carers, or children's home workers.",
+        "reference": "Paragraph 60, Exclusion Guidance"
+      },
+      {
+        "content": "Schools can create environments where positive behaviours are more likely by proactively supporting pupils to behave appropriately. Pupils should be taught explicitly what good behaviour looks like. Some pupils will need additional support to reach the expected standard of behaviour. Where possible, this support should be identified and put in place as soon as possible to avoid misbehaviour occurring in the first place.",
+        "reference": "Introduction, Behavioural Advice"
+      },
+      {
+        "content": "Schools should adopt a range of initial intervention strategies to help pupils manage their behaviour and to reduce the likelihood of suspension and permanent exclusion. This is achieved by helping pupils understand behavioural expectations and by providing support for pupils who struggle to meet those expectations. Some pupils will need more support than others and this should be provided as proactively as possible. It will often be necessary to deliver this support outside of the classroom, in small groups, or in one-to-one activities.",
+        "reference": "Page 27, Behavioural Advice"
+      },
+      {
+        "content": "Initial intervention to address underlying factors leading to misbehaviour should include an assessment of whether appropriate provision is in place to support any SEND that a pupil may have. The 'graduated response' should be used to assess, plan, deliver and then review the needs of the pupil and the impact of the support being provided. If the pupil has an Education, Health and Care (EHC) plan, early contact with the local authority about the behavioural issues would be appropriate and an emergency review of the plan might be needed.",
+        "reference": "Page 27, Behavioural Advice"
+      },
+      {
+        "content": "Where a school has serious concerns about a pupil's behaviour, it should consider whether a multi-agency assessment such as an early help assessment or statutory assessment that goes beyond the pupil's educational needs is required.",
+        "reference": "Page 27, Behavioural Advice"
+      },
+      {
+        "content": "Early intervention to address underlying causes of disruptive behaviour should include an assessment of whether appropriate provision is in place to support any SEN or disability that a pupil may have. The head teacher should also consider the use of a multi-agency assessment for a pupil who demonstrates persistent disruptive behaviour. Such assessments may pick up unidentified SEN, disability or mental health problems but the scope of the assessment could go further, for example, by seeking to identify housing or family problems.",
+        "reference": "Paragraph 3.24, Mental health and behaviour in schools"
+      },
+      {
+        "content": "It is important that children are provided with support as soon as a problem emerges, at any point in their life. Providing early help is more effective in promoting the welfare of children than reacting later.",
+        "reference": "Paragraph 4.2, Mental health and behaviour in schools"
+      },
+      {
+        "content": "All schools should have a clear approach to identifying and responding to SEN. The benefits of early identification are widely recognised - identifying need at the earliest point and then making effective provision improves long-term outcomes for the child or young person.",
+        "reference": "Paragraph 6.14, Special educational needs and disability code of practice: 0 to 25 years"
+      },
+      {
+        "content": "Professionals should also be alert to other events that can lead to learning difficulties or wider mental health difficulties, such as bullying or bereavement. Such events will not always lead to children having SEN but it can have an impact on wellbeing and sometimes this can be severe. Schools should ensure they make appropriate provision for a child's short-term needs in order to prevent problems escalating.",
+        "reference": "Paragraph 6.22, Special educational needs and disability code of practice: 0 to 25 years"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "Student has SEN": [
+          "CHILD_NAME has special educational needs in the form of <<DESCRIPTION OF SEND>>. These needs exhibit themselves as <<RELEVANT BEHAVIOURS>>.",
+          "Whilst it is appreciated that the school has taken some pastoral and welfare steps, it is essential, according to the section of the SEND Code of Practice outlined above, that action taken is regularly reviewed, assessed and amended where it has failed to achieve the desired effect. This is what the SEND Code of Practice means when it refers to “purposeful” intervention. It is key that children are provided with support as soon as a problem emerges, at any point in their life. Providing early help is more effective in promoting the welfare of children than reacting later.",
+          "It is not satisfactory that a school simply goes through the motions or follows a standard template plan. Every child is different, and interventions need to be tailored to their specific needs. They must be kept under review and amended wherever appropriate. The school's records show no sign of review or forward planning. There is no assessment of the intervention's efficacy and we therefore invite the governors to conclude that the school has not satisfied its duty to act early to mitigate the risk of permanent exclusion.",
+          "Therefore, the exclusion has not been used as a last resort and the governors should reinstate CHILD_NAME with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "School failed to secure external support/intervention",
+    "relevant_guidance": ["Exclusion Guidance", "Behavioural Advice"], 
+    "relevant_excerpts": [
+      {
+        "content": "Where a pupil has an EHC plan, schools should contact the local authority about any behavioural concerns at an early stage and consider requesting an early annual review prior to making the decision to suspend or permanently exclude. For those with SEN but without an EHC plan, the school should review, with external specialists as appropriate, whether the current support arrangements are appropriate and what changes may be required.",
+        "reference": "Paragraph 57, Exclusion Guidance"
+      },
+      {
+        "content": "Where a looked-after child (LAC) is likely to be subject to a suspension or permanent exclusion, the Designated Teacher (DT) should contact the local authority's VSH as soon as possible. The VSH, working with the DT and others, should consider what additional assessment and support need to be put in place to help the school address the factors affecting the child's behaviour and reduce the need for suspension or permanent exclusion. Where relevant, the school should also engage with a child's social worker, foster carers, or children's home workers.",
+        "reference": "Paragraph 60, Exclusion Guidance"
+      },
+      {
+        "content": "Schools should consider whether the misbehaviour gives cause to suspect that a pupil is suffering, or is likely to suffer, harm. Where this may be the case as set out in Part 1 of keeping children safe in education, school staff should follow the school's child protection policy and speak to the designated safeguarding lead (or deputy). They will consider if pastoral support, an early help intervention or a referral to children's social care is appropriate.",
+        "reference": "Page 17, Behavioural Advice"
+      },
+      {
+        "content": "Examples of interventions schools can consider include: \n - engaging with local partners and agencies to address specific challenges such as poor anger management, a lack of resilience and difficulties with peer relationships and social skills",
+       "reference": "Page 27, Behavioural Advice"
+      },
+      {
+        "content": "Where a school has serious concerns about a pupil's behaviour, it should consider whether a multi-agency assessment such as an early help assessment or statutory assessment that goes beyond the pupil's educational needs is required (see guidance Working together to safeguard children).",
+       "reference": "Page 27, Behavioural Advice"
+      },
+      {
+        "content": "Where a child is being supported through local authority children's social care, their allocated social worker can be an important source of appropriately-shared information about wider developmental needs, child protection concerns, and parental, familial and contextual circumstances. Effective multi-agency working between schools and social care will help to inform a school's assessment of child's educational and mental health needs, as well as enabling a prompt response to any safeguarding concerns.",
+        "reference": "Paragraph 3.22, Mental health and behaviour in schools"
+      },
+      {
+        "content": "Early intervention to address underlying causes of disruptive behaviour should include an assessment of whether appropriate provision is in place to support any SEN or disability that a pupil may have. The head teacher should also consider the use of a multi-agency assessment for a pupil who demonstrates persistent disruptive behaviour. Such assessments may pick up unidentified SEN, disability or mental health problems but the scope of the assessment could go further, for example, by seeking to identify housing or family problems.",
+        "reference": "Paragraph 3.24, Mental health and behaviour in schools"
+      },
+      {
+        "content": "Early intervention to identify issues and provide effective support is crucial. The school role in supporting and promoting mental health and wellbeing can be summarised as: \n - Access to specialist support: working effectively with external agencies to provide swift access or referrals to specialist support and treatment.",
+        "reference": "Paragraph 1.2, Mental health and behaviour in schools"
+      },
+      {
+        "content": "There are a range of options for identifying where pupils might need extra support, and for helping schools to understand what sort of support might be suitable, including working with external agencies.",
+        "reference": "Paragraph 4.1, Mental health and behaviour in schools"
+      },
+      {
+        "content": "It is important that children are provided with support as soon as a problem emerges, at any point in their life. Providing early help is more effective in promoting the welfare of children than reacting later. Schools should have access to local educational psychology services, who will support children with SEND, but can also be well placed to advise on emerging mental health needs and either to provide direct intervention or signpost to other, more appropriate, forms of support.",
+        "reference": "Paragraph 4.2, Mental health and behaviour in schools"
+      },
+      {
+        "content": "Local areas should have a comprehensive range of effective, evidence-based services in place to address assessed needs early, and will typically include support for mental health.",
+        "reference": "Paragraph 4.3, Mental health and behaviour in schools"
+      },
+      {
+        "content": "Where a pupil continues to make less than expected progress, despite evidence based support and interventions that are matched to the pupil's area of need, the school should consider involving specialists, including those secured by the school itself or from outside agencies.",
+        "reference": "Paragraph 6.58, Special educational needs and disability code of practice: 0 to 25 years"
+      },
+      {
+        "content": "Schools may involve specialists at any point to advise them on early identification of SEN and effective support and interventions. A school should always involve a specialist where a pupil continues to make little or no progress or where they continue to work at levels substantially below those expected of pupils of a similar age despite evidence-based SEN support delivered by appropriately trained staff.",
+        "reference": "Paragraph 6.59, Special educational needs and disability code of practice: 0 to 25 years"
+      },
+      {
+        "content": "Where assessment indicates that support from specialist services is required, it is important that children and young people receive it as quickly as possible. Joint commissioning arrangements should seek to ensure that there are sufficient services to meet the likely need in an area. The Local Offer should set out clearly what support is available from different services and how it may be accessed.",
+        "reference": "Paragraph 6.60, Special educational needs and disability code of practice: 0 to 25 years"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "Student has SEN": [
+          "CHILD_NAME has special educational needs in the form of <<DESCRIPTION OF SEND>>. These needs exhibit themselves as <<RELEVANT BEHAVIOURS>>.",
+          "Whilst it is appreciated that the school has taken some pastoral and welfare steps, it is essential, according to the section of the SEND Code of Practice outlined above, that action taken is regularly reviewed, assessed and amended where it has failed to achieve the desired effect. This is what the SEND Code of Practice means when it refers to “purposeful” intervention.",
+          "In addition, there are a range of additional support and outside services available to a school when they are struggling to support a young person with the resources available to them internally. It is vital that a school takes these steps if they are going to successfully demonstrate that the exclusion was a last resort, because outside services can provide very effective, specialist interventions that are not feasible for a school to have on internally. It is not sufficient that a school simply exhausts their internal offering of support but fail to explore why it may not have been effective.",
+          "There is no evidence provided by the school to show that they have engaged external services or made referrals for CHILD_NAME, in addition there is no evidence to show that they made efforts to access additional funding to provide intense support in the school system, such as by way of an education health and care plan (“EHCP”) assessment.",
+          "Considering the school's stated concerns around CHILD_NAME's needs, and their attempts to engage them with in-house support, which were not successful, this is a serious failing.",
+          "The school has not acted to mitigate the risk of exclusion. The permanent exclusion is therefore not a last resort and the governors are asked to reinstate CHILD_NAME with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "Second limb of the threshold found in Paragraph 11 is not satisfied",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "A permanent exclusion is when a pupil is no longer allowed to attend a school (unless the pupil is reinstated). The decision to exclude a pupil permanently should only be taken: \n - in response to a serious breach or persistent breaches of the school's behaviour policy; and \n - where allowing the pupil to remain in school would seriously harm the education or welfare of the pupil or others such as staff or pupils in the school.",
+        "reference": "Paragraph 11, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "If the breach is a one-off": [
+          "Whilst we acknowledge that the school has identified a serious breach of the school's behaviour policy, it is nonetheless submitted that the school has failed to satisfy the second limb of the test at paragraph 11 of the guidance, and that CHILD_NAME would be able to return to the school without seriously harming the education or welfare of themselves or others at the school.",
+          "CHILD_NAME can return to school without seriously harming the education or welfare of themselves or others. The incident young person is accused of is isolated and clearly does not reflect their otherwise very positive engagement with their education.",
+          "CHILD_NAME has never had a suspension, and never been involved in a similar incident. They have never been involved in any serious breaches of the school's behaviour policy.",
+          "CHILD_NAME deeply regrets their involvement in this incident and understands the school's need to address what happened. However, this does not mean that a permanent exclusion is justified, and it is clear from the behaviour records that CHILD_NAME will not seriously harm the education or welfare of themselves or others if they are allowed to return.  Therefore, the test at paragraph 11 is not satisfied and the governors should reinstate CHILD_NAME with immediate effect."
+        ],
+        "If there were several breaches but they were not serious enough": [
+          "CHILD_NAME can return to name of school without seriously harming the education or welfare of themselves or others. Whilst they are accused of a number of breaches of the school's behaviour policy, these breaches are very low level, involving only minor disruption or no disruption to other learners. Whilst we do not suggest they should be ignored entirely; they clearly do not evidence the level of severity required to satisfy the second limb of the test at paragraph 11 of the Exclusions Guidance.",
+          "CHILD_NAME deeply regrets their involvement in these incidents and understands the school's need to address their behaviour. However, this does not mean that a permanent exclusion is justified, and it is clear from the behaviour records that CHILD_NAME will not seriously harm the education or welfare of themselves or others if they are allowed to return. Therefore, the test at paragraph 11 is not satisfied and the governors should reinstate CHILD_NAME with immediate effect."
+        ],
+        "If the school did not appreciate relevant contributing factors":  [
+          "The school has failed to take appropriate steps to investigate, identify and address unmet needs that is contributing to young person's behaviour.",
+          "The school has therefore not only failed to mitigate the risk of exclusion but cannot now show that the second limb of the test at paragraph 11 is satisfied because, with support, CHILD_NAME can return to the school without seriously harming the education or welfare of themselves or others.",
+          "Therefore, the test at paragraph 11 is not satisfied and we ask the governors to reinstate CHILD_NAME with immediate effect."
+        ]
+      }
+    }
+  },
+  {
+    "title": "The school failed to provide an exclusion letter",
+    "relevant_guidance": ["Exclusion Guidance"], 
+    "relevant_excerpts": [
+      {
+        "content": "Whenever a headteacher suspends or permanently excludes a pupil they must, without delay, notify parents or the excluded pupil (if they are 18 years or older) of the period of the suspension or permanent exclusion and the reason(s) for it.",
+        "reference": "Paragraph 63, Exclusion Guidance"
+      },
+      {
+        "content": "They must also, without delay, after their decision, provide parents with the following information in writing: \n - the reason(s) for the suspension or permanent exclusion; \n - the period of a suspension or, for a permanent exclusion, the fact that it is permanent; \n - parents' right to make representations about the suspension or permanent exclusion to the governing board (in line with the requirements set out in paragraphs 97 to 107) and how the pupil may be involved in this; \n - parents' (or an excluded pupil if they are 18 years or older) right to make a request to hold the meeting via the use of remote access and how and to whom to make this request (further information on other information this should include can be found in Annex A: Key principles when conducting meetings via the use of remote access); \n - how any representations should be made; and \n - where there is a legal requirement for the governing board to consider the suspension or permanent exclusion, that parents or an excluded pupil (if they are 18 years or older) have a right to attend a meeting, to be represented at that meeting (at their own expense) and to bring a friend.",
+        "reference": "Paragraph 64, Exclusion Guidance"
+      }
+    ],
+    "suggested_wordings": {
+      "conditions": {
+        "": [
+          "In contravention of Paragraph 64 of the exclusion guidance, the headteacher sent no letter to confirm CHILD_NAME's exclusion. This is a serious procedural error. Not only has the headteacher failed in a procedural requirement of the statutory guidance, but they have left the family without written confirmation of the exclusion, or any way to understand its reasons and their rights. This procedural flaw undermines the headteacher's decision-making process and makes it inevitable that the process of challenging the exclusion is tilted irrevocably in favour of the school. Therefore, the governors must conclude that the process has been unfair and reinstate CHILD_NAME with immediate effect." 
+        ]
+      }
+    }
+  }
+]
