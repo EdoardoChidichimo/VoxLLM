@@ -58,6 +58,11 @@ def _get_ollama_api_key() -> str:
     api_key = os.getenv("OLLAMA_API_KEY")
     if api_key:
         return api_key
+        
+    OLLAMA_API_KEY = st.secrets["ollama"]["api_key"]
+    if OLLAMA_API_KEY:
+        return OLLAMA_API_KEY
+        
     if HAS_STREAMLIT and "ollama_api_key" in st.secrets:
         secret_value = st.secrets["ollama_api_key"]
         if isinstance(secret_value, str):
