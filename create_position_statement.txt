@@ -1,0 +1,72 @@
+You are generating a position statement that will be rendered into LaTeX. 
+Return ONLY a single JSON object. Do not wrap the output in Markdown code fences. 
+Do not include any prose before or after the JSON.
+
+SOURCE MATERIAL
+- Exclusion Reason: {exclusion_reason}
+- School's Facts: {school_facts}
+- Student Perspective: {student_perspective}
+- Student Background: {background_summary}
+- Case Stage Information: {stage_info}
+- Specific Instructions: {specific_instructions}
+- Exclusion Letter Date: {exclusion_letter_date}
+- Other information provided: {other_information_provided}
+
+GUIDANCE DOCUMENTS
+- Suspensions Guidance: 
+{suspensions_guidance}
+
+- Behaviour in Schools Guidance: 
+{behaviour_in_schools_guidance}
+
+POSITION STATEMENT GROUNDS (JSON input from tool)
+{position_statement_grounds}
+
+TASK
+Using only the material above, produce 4–6 grounds of argument. Each ground must include 3–5 bullet points. You may select the most relevant grounds from the provided list and, if justified by the facts, add your own grounds.
+
+STRICT OUTPUT FORMAT
+Return a JSON object with this exact shape:
+
+{
+  "grounds": [
+    {
+      "ground_number": 1,
+      "ground_title": "Plain text, no LaTeX/Markdown.",
+      "bullets": [
+        {
+          "type": "quote" | "text",
+          "content": "Plain text only. If type=quote, this is the full quoted excerpt. No Markdown, no LaTeX.",
+          "reference": "[Page/Paragraph/Part N or N–N, Exclusion Guidance | Behavioural Advice]"  // required iff type=quote
+        }
+        // 3–5 total bullets per ground. If a quote exists, it MUST be the first bullet.
+      ]
+    }
+    // 4–6 total grounds
+  ],
+  "placeholders_used": ["CHILD_NAME","PARENT_NAME","SCHOOL_NAME","EXCLUSION_DATE","EXCLUSION_LETTER_DATE","STAGE"] // include only those actually used
+}
+
+REFERENCING RULES
+- Every quoted excerpt (type=quote) MUST be followed by its reference in the field "reference" using this exact format:
+  "[Page/Paragraph/Part SPACE Number/NumberRange, DocumentName]" where DocumentName ∈ {"Exclusion Guidance","Behavioural Advice"}.
+- Do not reference "suggested wordings" as documents.
+
+CONTENT RULES
+- Do NOT include any LaTeX commands, inline math, Markdown, or special formatting in any field.
+- Use only plain punctuation and straight quotes (\" \').
+- Use only these placeholders where needed: [CHILD_NAME, PARENT_NAME, SCHOOL_NAME, EXCLUSION_DATE, EXCLUSION_LETTER_DATE, STAGE].
+  Replace with actual information if present in the sources; otherwise omit the placeholder and adapt wording without inventing facts.
+- Entirely quoted excerpts should be their own bullet and, if present, MUST be the first bullet.
+- All reasoning must be strictly relevant to the provided facts and guidance. Do not introduce new facts.
+
+CHARACTER & SAFETY CONSTRAINTS
+- Allowed characters: basic printable ASCII plus £, € and en dash (–). Do not emit control characters or zero-width chars.
+- Prohibited sequences anywhere in output: backslash followed by letters (e.g. \def, \input, \usepackage, \write, \openout, \read, \csname, \catcode).
+- Avoid curly quotes, smart dashes (except en dash), and emojis.
+
+VALIDITY
+- Ensure the JSON parses with a strict parser. No trailing commas. No comments. No additional top-level fields.
+
+YOUR RESPONSE
+Return ONLY the JSON object.

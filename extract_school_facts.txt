@@ -1,0 +1,18 @@
+Please synthesise the following information about a school exclusion case to create a clear summary of the school's position:
+
+EXCLUSION LETTER CONTENT:
+{exclusion_letter_content}
+
+SCHOOL'S VERSION OF EVENTS:
+{school_version_events}
+
+SCHOOL'S EVIDENCE:
+{school_evidence}
+
+Please provide a synthesised summary that:
+1. Identifies the key facts presented by the school
+2. Highlights any inconsistencies or gaps in the information
+3. Summarises the evidence provided
+4. Presents the information in a clear, structured format
+
+Focus on factual accuracy and avoid speculation. If there are contradictions between sources, note them clearly. Do NOT include any legal citations or references to statutes or other legal sources. Respond succinctly but without missing any information or detail. Respond ONLY with the summary as a paragraph, no other text or formatting.

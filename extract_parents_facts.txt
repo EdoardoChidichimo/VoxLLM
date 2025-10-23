@@ -1,0 +1,15 @@
+Please synthesise the following information about a school exclusion case from the student's perspective:
+
+STUDENT AGREES WITH SCHOOL'S VERSION: {student_agrees_with_school}
+
+STUDENT'S VERSION OF EVENTS: {student_version_events}
+
+WITNESSES DETAILS: {witnesses_details}
+
+STUDENT VOICE HEARD DETAILS: {student_voice_heard_details}
+
+Please provide a synthesised analysis that:
+1. Identifies any contradictions between school and student versions
+2. Notes the availability and potential impact of witnesses
+
+Respond succinctly but without missing any information or detail. Do NOT include any legal citations or references to statutes or other legal sources. Respond ONLY with the summary as a paragraph, no other text or formatting.

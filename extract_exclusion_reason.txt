@@ -1,0 +1,11 @@
+Please extract the specific reason(s) given for the school exclusion from the following exclusion letter:
+
+EXCLUSION LETTER:
+{exclusion_letter_content}
+
+Please:
+1. Identify the primary stated reason for the exclusion
+2. Quote the exact language used in the letter where possible
+3. Identify any specific incidents or dates mentioned
+
+Respond succinctly but without missing any information or detail. Respond ONLY with a 1–3 sentence(s) summary, no other text or formatting. Do NOT include any legal citations or references to statutes or other legal sources.
