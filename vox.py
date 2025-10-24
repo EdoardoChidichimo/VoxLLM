@@ -7,6 +7,7 @@ from pathlib import Path
 import streamlit as st
 from datetime import date, datetime, timezone
 from typing import Any, Dict
+import pytz
 
 try:
     from google.auth.transport.requests import AuthorizedSession
@@ -516,6 +517,13 @@ if st.session_state.step == steps_total - 1:
             st.subheader("Reviewer Evaluation")
             with st.form("evaluation_form"):
                 st.markdown(f"Run ID: `{run_id}`")
+                
+                # Reviewer information
+                st.markdown("**Reviewer Information**")
+                reviewer_name = st.text_input("Your name", placeholder="Enter your full name")
+                reviewer_email = st.text_input("Your email", placeholder="Enter your email address")
+                
+                st.markdown("**Evaluation Scores**")
                 accuracy_score = st.slider("Accuracy of factual content", 0, 10, 5)
                 relevance_score = st.slider("Relevance of arguments", 0, 10, 5)
                 writing_score = st.slider("Writing style and clarity", 0, 10, 5)
@@ -525,10 +533,14 @@ if st.session_state.step == steps_total - 1:
                 submitted_feedback = st.form_submit_button("Submit feedback")
 
             if submitted_feedback:
-                timestamp_utc = datetime.now(timezone.utc).isoformat()
+                # Use UK timezone instead of UTC
+                uk_tz = pytz.timezone('Europe/London')
+                timestamp_uk = datetime.now(uk_tz).isoformat()
                 feedback_payload = {
                     "run_id": run_id,
-                    "timestamp_utc": timestamp_utc,
+                    "timestamp_utc": timestamp_uk,  # Note: keeping field name as timestamp_utc for compatibility
+                    "reviewer_name": reviewer_name,
+                    "reviewer_email": reviewer_email,
                     "stage": stage or "",
                     "accuracy": accuracy_score,
                     "relevance": relevance_score,
@@ -578,6 +590,13 @@ if st.session_state.step == steps_total - 1:
         with st.form("evaluation_form"):
             run_id = st.session_state["latest_run"]["run_id"]
             st.markdown(f"Run ID: `{run_id}`")
+            
+            # Reviewer information
+            st.markdown("**Reviewer Information**")
+            reviewer_name = st.text_input("Your name", placeholder="Enter your full name")
+            reviewer_email = st.text_input("Your email", placeholder="Enter your email address")
+            
+            st.markdown("**Evaluation Scores**")
             accuracy_score = st.slider("Accuracy of factual content", 0, 10, 5)
             relevance_score = st.slider("Relevance of arguments", 0, 10, 5)
             writing_score = st.slider("Writing style and clarity", 0, 10, 5)
@@ -587,10 +606,14 @@ if st.session_state.step == steps_total - 1:
             submitted_feedback = st.form_submit_button("Submit feedback")
 
         if submitted_feedback:
-            timestamp_utc = datetime.now(timezone.utc).isoformat()
+            # Use UK timezone instead of UTC
+            uk_tz = pytz.timezone('Europe/London')
+            timestamp_uk = datetime.now(uk_tz).isoformat()
             feedback_payload = {
                 "run_id": run_id,
-                "timestamp_utc": timestamp_utc,
+                "timestamp_utc": timestamp_uk,  # Note: keeping field name as timestamp_utc for compatibility
+                "reviewer_name": reviewer_name,
+                "reviewer_email": reviewer_email,
                 "stage": st.session_state["latest_run"]["stage"],
                 "accuracy": accuracy_score,
                 "relevance": relevance_score,
