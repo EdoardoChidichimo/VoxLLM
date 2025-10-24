@@ -5,7 +5,15 @@ import uuid
 from pathlib import Path
 from collections.abc import Mapping
 
-import streamlit as st
+try:
+    import streamlit as st
+    HAS_STREAMLIT = True
+except ImportError as exc:  # pragma: no cover
+    HAS_STREAMLIT = False
+    raise ImportError(
+        "Streamlit is required to run this application. "
+        "Install it with `pip install streamlit`."
+    ) from exc
 from datetime import date, datetime, timezone
 import pytz
 

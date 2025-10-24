@@ -29,6 +29,15 @@ PLACEHOLDER_NAMES = (
 )
 BRACKET_PLACEHOLDER_PATTERN = re.compile(r"\[(" + "|".join(PLACEHOLDER_NAMES) + r")\]")
 ANGLE_PLACEHOLDER_PATTERN = re.compile(r"<<(" + "|".join(PLACEHOLDER_NAMES) + r")>>")
+AT_PLACEHOLDER_PATTERN = re.compile(r"@@(" + "|".join(PLACEHOLDER_NAMES) + r")@@")
+OPENING_SINGLE_QUOTE_PATTERN = re.compile(r"(^|[\s(\[{<])'(?=\S)")
+
+
+def fix_opening_single_quotes(text):
+    """Replace straight opening single quotes with LaTeX-friendly backticks."""
+    if not text:
+        return text
+    return OPENING_SINGLE_QUOTE_PATTERN.sub(lambda match: match.group(1) + "`", text)
 
 
 @dataclass
@@ -67,6 +76,7 @@ def resolve_placeholders(text, values):
 
     text = BRACKET_PLACEHOLDER_PATTERN.sub(replace_match, text)
     text = ANGLE_PLACEHOLDER_PATTERN.sub(replace_match, text)
+    text = AT_PLACEHOLDER_PATTERN.sub(replace_match, text)
     return text
 
 
@@ -136,7 +146,8 @@ def _format_ground_titles(grounds, placeholder_values):
     for ground in grounds:
         title = ground.get("ground_title", "")
         resolved_title = resolve_placeholders(title, placeholder_values)
-        escaped_title = replace_newlines(escape_latex(resolved_title))
+        normalized_title = fix_opening_single_quotes(resolved_title)
+        escaped_title = replace_newlines(escape_latex(normalized_title))
         items.append(f"\\item {escaped_title}")
     return "\n".join(items)
 
@@ -149,7 +160,8 @@ def _format_ground_content(grounds, placeholder_values):
         bullets = ground.get("bullets", [])
 
         resolved_title = resolve_placeholders(title, placeholder_values)
-        escaped_title = replace_newlines(escape_latex(resolved_title))
+        normalized_title = fix_opening_single_quotes(resolved_title)
+        escaped_title = replace_newlines(escape_latex(normalized_title))
         heading = f"\\section*{{\\raggedright Ground {number}: {escaped_title}}}"
 
         enumerate_options = (
@@ -168,16 +180,20 @@ def _format_ground_content(grounds, placeholder_values):
             if bullet_type == "quote":
                 if resolved_content.startswith('"') and resolved_content.endswith('"'):
                     inner = resolved_content[1:-1].strip()
+                    resolved_content = f"``{inner}''"
+                elif resolved_content.startswith("'") and resolved_content.endswith("'"):
+                    inner = resolved_content[1:-1].strip()
+                    resolved_content = f"`{inner}'"
                 else:
-                    inner = resolved_content
-                quoted_content = f"``{inner}''"
-                resolved_content = quoted_content
+                    resolved_content = f"``{resolved_content}''"
 
+            resolved_content = fix_opening_single_quotes(resolved_content)
             escaped_content = replace_newlines(escape_latex(resolved_content))
             line = escaped_content
 
             if reference:
                 resolved_reference = resolve_placeholders(reference, placeholder_values)
+                resolved_reference = fix_opening_single_quotes(resolved_reference)
                 escaped_reference = replace_newlines(escape_latex(resolved_reference))
                 line = f"{line} {escaped_reference}"
 
@@ -269,7 +285,7 @@ def render_position_statement_pdf(
             print(f"WARNING: {key} is empty!")
 
     escaped_placeholders = {
-        key: replace_newlines(escape_latex(value))
+        key: replace_newlines(escape_latex(fix_opening_single_quotes(value)))
         for key, value in placeholder_values.items()
     }
 
