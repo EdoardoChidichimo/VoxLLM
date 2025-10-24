@@ -52,20 +52,37 @@ def _load_service_account_info() -> Dict[str, Any]:
 
 
 def _get_spreadsheet_id() -> str:
+    # Check if it's nested in google_service_account section
+    if "google_service_account" in st.secrets:
+        service_account_info = st.secrets["google_service_account"]
+        if isinstance(service_account_info, dict) and "google_sheets_spreadsheet_id" in service_account_info:
+            return service_account_info["google_sheets_spreadsheet_id"]
+    
+    # Check if it's at root level
     if "google_sheets_spreadsheet_id" in st.secrets:
         return st.secrets["google_sheets_spreadsheet_id"]
+    
     sheet_id = os.getenv("GOOGLE_SHEETS_SPREADSHEET_ID", "")
     if sheet_id:
         return sheet_id
     raise RuntimeError(
         "Google Sheets spreadsheet ID is missing. "
-        "Set st.secrets['google_sheets_spreadsheet_id'] or the GOOGLE_SHEETS_SPREADSHEET_ID environment variable."
+        "Set st.secrets['google_service_account']['google_sheets_spreadsheet_id'], "
+        "st.secrets['google_sheets_spreadsheet_id'], or the GOOGLE_SHEETS_SPREADSHEET_ID environment variable."
     )
 
 
 def _get_spreadsheet_range() -> str:
+    # Check if it's nested in google_service_account section
+    if "google_service_account" in st.secrets:
+        service_account_info = st.secrets["google_service_account"]
+        if isinstance(service_account_info, dict) and "google_sheets_range" in service_account_info:
+            return service_account_info["google_sheets_range"]
+    
+    # Check if it's at root level
     if "google_sheets_range" in st.secrets:
         return st.secrets["google_sheets_range"]
+    
     return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:J")
 
 
