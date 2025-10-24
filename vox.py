@@ -122,7 +122,7 @@ def _get_spreadsheet_range():
     if root_value:
         return root_value
     
-    return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:L")
+    return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:P")
 
 
 def append_feedback_to_sheet(feedback):
@@ -154,6 +154,10 @@ def append_feedback_to_sheet(feedback):
         feedback["ease_of_use"],
         feedback["remarks"],
         feedback.get("pdf_filename", ""),
+        feedback.get("school_facts_llm", ""),
+        feedback.get("exclusion_reason_llm", ""),
+        feedback.get("student_perspective_llm", ""),
+        feedback.get("position_statement_json_llm", ""),
     ]]
 
     url = (
@@ -461,8 +465,9 @@ if st.session_state.step == steps_total - 1:
 
         if stage == "Independent Review Panel":
             specific_instructions = (
-                "Focus the grounds on procedural and substantive issues with the governing board decision. "
-                "Emphasise errors during the governors' meeting and why the IRP should overturn that decision."
+                "The IRP is a review of the Governors’ decision and how they came to the decision in the meeting, it is not a review of the headteacher’s decision and so should not go over any factual issues or arguments concerning the headteacher’s decision."
+                "Focus the grounds on procedural and substantive issues in the Governors’ meeting and in the Governors’ decision. In the grounds of argument, do not review the headteacher’s decision, only focus on the Governors’ decision."
+                "Use the IRP grounds of argument to emphasise errors in the Governors’ meeting and Governors’ decision, not in the headteacher’s decision."
             )
         else:
             specific_instructions = ""
@@ -590,6 +595,10 @@ if st.session_state.step == steps_total - 1:
                     "ease_of_use": ease_score,
                     "remarks": reviewer_remarks,
                     "pdf_filename": download_name,
+                    "school_facts_llm": school_facts or "",
+                    "exclusion_reason_llm": exclusion_reason or "",
+                    "student_perspective_llm": student_perspective or "",
+                    "position_statement_json_llm": json.dumps(position_payload) if position_payload else "",
                 }
                 st.write("Feedback payload:", feedback_payload)
 
@@ -665,6 +674,8 @@ if st.session_state.step == steps_total - 1:
             # Use UK timezone instead of UTC
             uk_tz = pytz.timezone('Europe/London')
             timestamp_uk = datetime.now(uk_tz).isoformat()
+            summaries = st.session_state.get("extracted_summaries") or {}
+            position_payload_state = st.session_state.get("latest_json_payload")
             feedback_payload = {
                 "run_id": run_id,
                 "timestamp_utc": timestamp_uk,  # Note: keeping field name as timestamp_utc for compatibility
@@ -678,6 +689,10 @@ if st.session_state.step == steps_total - 1:
                 "ease_of_use": ease_score,
                 "remarks": reviewer_remarks,
                 "pdf_filename": st.session_state["latest_run"]["pdf_filename"],
+                "school_facts_llm": summaries.get("school_facts", ""),
+                "exclusion_reason_llm": summaries.get("exclusion_reason", ""),
+                "student_perspective_llm": summaries.get("student_perspective", ""),
+                "position_statement_json_llm": json.dumps(position_payload_state) if position_payload_state else "",
             }
             st.write("Feedback payload:", feedback_payload)
 
