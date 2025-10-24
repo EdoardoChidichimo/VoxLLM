@@ -27,12 +27,43 @@ from vox_extract import extract_all, generate_position_statement
 SHEETS_SCOPES = ("https://www.googleapis.com/auth/spreadsheets",)
 
 
+def _get_secret_table(section_name):
+    """Return a normalised mapping for a secrets section or None if missing."""
+    if not HAS_STREAMLIT:
+        return None
+    try:
+        raw_value = st.secrets[section_name]
+    except Exception:
+        return None
+
+    if isinstance(raw_value, str):
+        try:
+            return json.loads(raw_value)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(
+                f"Failed to parse the '{section_name}' section in Streamlit secrets as JSON."
+            ) from exc
+    if isinstance(raw_value, Mapping):
+        return dict(raw_value)
+    return None
+
+
+def _get_root_secret(key):
+    if not HAS_STREAMLIT:
+        return None
+    try:
+        return st.secrets[key]
+    except Exception:
+        return None
+
+
 def _load_service_account_info():
-    if "google_service_account" in st.secrets:
-        info = st.secrets["google_service_account"]
-        if isinstance(info, str):
-            return json.loads(info)
-        return dict(info)
+    info = _get_secret_table("google_service_account")
+    if info:
+        info_for_google = dict(info)
+        info_for_google.pop("google_sheets_spreadsheet_id", None)
+        info_for_google.pop("google_sheets_range", None)
+        return info_for_google
     file_path = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE")
     if file_path:
         path = Path(file_path).expanduser()
@@ -53,23 +84,14 @@ def _load_service_account_info():
 
 def _get_spreadsheet_id():
     # Check if it's nested in google_service_account section
-    if "google_service_account" in st.secrets:
-        service_account_info = st.secrets["google_service_account"]
-        if isinstance(service_account_info, str):
-            try:
-                parsed_info = json.loads(service_account_info)
-            except json.JSONDecodeError:
-                parsed_info = {}
-        elif isinstance(service_account_info, Mapping):
-            parsed_info = dict(service_account_info)
-        else:
-            parsed_info = {}
-        if "google_sheets_spreadsheet_id" in parsed_info:
-            return parsed_info["google_sheets_spreadsheet_id"]
+    service_account_info = _get_secret_table("google_service_account")
+    if service_account_info and "google_sheets_spreadsheet_id" in service_account_info:
+        return service_account_info["google_sheets_spreadsheet_id"]
     
     # Check if it's at root level
-    if "google_sheets_spreadsheet_id" in st.secrets:
-        return st.secrets["google_sheets_spreadsheet_id"]
+    root_value = _get_root_secret("google_sheets_spreadsheet_id")
+    if root_value:
+        return root_value
     
     sheet_id = os.getenv("GOOGLE_SHEETS_SPREADSHEET_ID", "")
     if sheet_id:
@@ -83,23 +105,14 @@ def _get_spreadsheet_id():
 
 def _get_spreadsheet_range():
     # Check if it's nested in google_service_account section
-    if "google_service_account" in st.secrets:
-        service_account_info = st.secrets["google_service_account"]
-        if isinstance(service_account_info, str):
-            try:
-                parsed_info = json.loads(service_account_info)
-            except json.JSONDecodeError:
-                parsed_info = {}
-        elif isinstance(service_account_info, Mapping):
-            parsed_info = dict(service_account_info)
-        else:
-            parsed_info = {}
-        if "google_sheets_range" in parsed_info:
-            return parsed_info["google_sheets_range"]
+    service_account_info = _get_secret_table("google_service_account")
+    if service_account_info and "google_sheets_range" in service_account_info:
+        return service_account_info["google_sheets_range"]
     
     # Check if it's at root level
-    if "google_sheets_range" in st.secrets:
-        return st.secrets["google_sheets_range"]
+    root_value = _get_root_secret("google_sheets_range")
+    if root_value:
+        return root_value
     
     return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:J")
 
