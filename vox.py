@@ -5,7 +5,7 @@ import uuid
 from pathlib import Path
 
 import streamlit as st
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from typing import Any, Dict
 
 try:
@@ -384,6 +384,13 @@ if st.session_state.step == steps_total - 1:
         st.success(f"Exclusion reason: {exclusion_reason}")
         st.success(f"Student perspective: {student_perspective}")
 
+        # Store summaries in session state for persistent display
+        st.session_state["extracted_summaries"] = {
+            "school_facts": school_facts,
+            "exclusion_reason": exclusion_reason,
+            "student_perspective": student_perspective,
+        }
+
         stage_info_parts = []
         if stage:
             stage_info_parts.append(f"Stage: {stage}.")
@@ -518,7 +525,7 @@ if st.session_state.step == steps_total - 1:
                 submitted_feedback = st.form_submit_button("Submit feedback")
 
             if submitted_feedback:
-                timestamp_utc = datetime.now(datetime.timezone.utc).isoformat()
+                timestamp_utc = datetime.now(timezone.utc).isoformat()
                 feedback_payload = {
                     "run_id": run_id,
                     "timestamp_utc": timestamp_utc,
@@ -544,6 +551,15 @@ if st.session_state.step == steps_total - 1:
     # Show PDF and review form if data has been submitted
     if "latest_run" in st.session_state:
         st.divider()
+        
+        # Display the extracted summaries
+        if "extracted_summaries" in st.session_state:
+            st.subheader("Extracted Summaries")
+            summaries = st.session_state["extracted_summaries"]
+            st.success(f"School facts: {summaries['school_facts']}")
+            st.success(f"Exclusion reason: {summaries['exclusion_reason']}")
+            st.success(f"Student perspective: {summaries['student_perspective']}")
+        
         st.subheader("Generated Position Statement")
         
         # Display the stored PDF data
@@ -571,7 +587,7 @@ if st.session_state.step == steps_total - 1:
             submitted_feedback = st.form_submit_button("Submit feedback")
 
         if submitted_feedback:
-            timestamp_utc = datetime.now(datetime.timezone.utc).isoformat()
+            timestamp_utc = datetime.now(timezone.utc).isoformat()
             feedback_payload = {
                 "run_id": run_id,
                 "timestamp_utc": timestamp_utc,
