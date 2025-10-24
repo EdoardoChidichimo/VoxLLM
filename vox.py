@@ -507,7 +507,7 @@ if st.session_state.step == steps_total - 1:
                 submitted_feedback = st.form_submit_button("Submit feedback")
 
             if submitted_feedback:
-                timestamp_utc = datetime.utcnow().isoformat()
+                timestamp_utc = datetime.now(datetime.timezone.utc).isoformat()
                 feedback_payload = {
                     "run_id": run_id,
                     "timestamp_utc": timestamp_utc,
