@@ -1,12 +1,10 @@
-from __future__ import annotations
-
 import os
 from pathlib import Path
-from typing import Any, Dict, Optional, Tuple
 
 import requests
 
 from rag_index import GuidanceRetriever, format_behaviour_block, format_suspensions_block
+from vox_helpers import _compose_guidance_query, _get_ollama_api_key, _normalise_context
 
 
 PROMPTS_DIR = Path("prompts")
@@ -43,38 +41,17 @@ system_messages = {
     ),
 }
 
-_guidance_retriever: Optional[GuidanceRetriever] = None
+_guidance_retriever = None
 
 
-def get_guidance_retriever() -> GuidanceRetriever:
+def get_guidance_retriever():
     global _guidance_retriever
     if _guidance_retriever is None:
         _guidance_retriever = GuidanceRetriever()
     return _guidance_retriever
 
 
-def _get_ollama_api_key() -> str:
-    """Load the Ollama API key from environment variables or Streamlit secrets."""
-    api_key = os.getenv("OLLAMA_API_KEY")
-    if api_key:
-        return api_key
-        
-    OLLAMA_API_KEY = st.secrets["ollama"]["api_key"]
-    if OLLAMA_API_KEY:
-        return OLLAMA_API_KEY
-        
-    if HAS_STREAMLIT and "ollama_api_key" in st.secrets:
-        secret_value = st.secrets["ollama_api_key"]
-        if isinstance(secret_value, str):
-            return secret_value
-        raise TypeError("Streamlit secret 'ollama_api_key' must be a string.")
-    raise RuntimeError(
-        "Ollama API key is not configured. Set the OLLAMA_API_KEY environment variable "
-        "or define st.secrets['ollama_api_key']."
-    )
-
-
-def call_llm(system_message: str, prompt: str) -> str:
+def call_llm(system_message, prompt):
     """Call Ollama chat endpoint with a simple system/user payload."""
     api_key = _get_ollama_api_key()
     headers = {
@@ -97,25 +74,15 @@ def call_llm(system_message: str, prompt: str) -> str:
     return text
 
 
-def _normalise_context(context: Dict[str, Any]) -> Dict[str, str]:
-    """Ensure all prompt variables are strings to keep str.format happy."""
-    normalised: Dict[str, str] = {}
-    for key, value in context.items():
-        if value is None:
-            normalised[key] = "Not provided"
-        else:
-            normalised[key] = str(value)
-    return normalised
 
-
-def build_prompt(template_filename: str, **template_context: Any) -> str:
+def build_prompt(template_filename, **template_context):
     """Load a prompt template and interpolate the provided variables."""
     template_path = PROMPTS_DIR / template_filename
     template_text = template_path.read_text(encoding="utf-8")
     context = _normalise_context(template_context)
 
     # Protect placeholder tokens before escaping braces in the template.
-    placeholder_tokens: Dict[str, str] = {}
+    placeholder_tokens = {}
     for key in context.keys():
         token = f"__PLACEHOLDER_{key.upper()}__"
         placeholder_tokens[f"{{{key}}}"] = token
@@ -129,7 +96,7 @@ def build_prompt(template_filename: str, **template_context: Any) -> str:
     return template_text.format(**context)
 
 
-def extract_school_facts(exclusion_letter_content: str, school_version_events: str, school_evidence: str) -> str:
+def extract_school_facts(exclusion_letter_content, school_version_events, school_evidence):
     system_message = system_messages["extract_school_facts"]
     prompt = build_prompt(
         "extract_school_facts.txt",
@@ -140,7 +107,7 @@ def extract_school_facts(exclusion_letter_content: str, school_version_events: s
     return call_llm(system_message, prompt)
 
 
-def extract_exclusion_reason(exclusion_letter_content: str) -> str:
+def extract_exclusion_reason(exclusion_letter_content):
     system_message = system_messages["extract_exclusion_reason"]
     prompt = build_prompt(
         "extract_exclusion_reason.txt",
@@ -149,12 +116,7 @@ def extract_exclusion_reason(exclusion_letter_content: str) -> str:
     return call_llm(system_message, prompt)
 
 
-def extract_student_perspective(
-    student_agrees_with_school: str,
-    student_version_events: str,
-    witnesses_details: str,
-    student_voice_heard_details: str,
-) -> str:
+def extract_student_perspective(student_agrees_with_school, student_version_events, witnesses_details, student_voice_heard_details):
     system_message = system_messages["extract_student_perspective"]
     prompt = build_prompt(
         "extract_parents_facts.txt",
@@ -166,15 +128,7 @@ def extract_student_perspective(
     return call_llm(system_message, prompt)
 
 
-def extract_all(
-    exclusion_letter_content: str,
-    school_version_events: str,
-    school_evidence: str,
-    student_agrees_with_school: str,
-    student_version_events: str,
-    witnesses_details: str,
-    student_voice_heard_details: str,
-) -> Tuple[str, str, str]:
+def extract_all(exclusion_letter_content, school_version_events, school_evidence, student_agrees_with_school, student_version_events, witnesses_details, student_voice_heard_details):
     school_facts = extract_school_facts(exclusion_letter_content, school_version_events, school_evidence)
     exclusion_reason = extract_exclusion_reason(exclusion_letter_content)
     student_perspective = extract_student_perspective(
@@ -186,41 +140,7 @@ def extract_all(
     return school_facts, exclusion_reason, student_perspective
 
 
-def _compose_guidance_query(
-    exclusion_reason: str,
-    school_facts: str,
-    student_perspective: str,
-    background_summary: str,
-    stage_info: str,
-    other_information_provided: str,
-    exclusion_letter_date: str,
-    specific_instructions: str,
-) -> str:
-    parts = [
-        exclusion_reason,
-        school_facts,
-        student_perspective,
-        background_summary,
-        stage_info,
-        other_information_provided,
-        exclusion_letter_date,
-        specific_instructions,
-    ]
-    return "\n\n".join(part.strip() for part in parts if part and part.strip())
-
-
-def build_guidance_context(
-    exclusion_reason: str,
-    school_facts: str,
-    student_perspective: str,
-    background_summary: str,
-    stage_info: str,
-    other_information_provided: str,
-    exclusion_letter_date: str,
-    specific_instructions: str,
-    behaviour_top_k: int = 4,
-    suspensions_top_k: int = 6,
-) -> Dict[str, str]:
+def build_guidance_context(exclusion_reason, school_facts, student_perspective, background_summary, stage_info, other_information_provided, exclusion_letter_date, specific_instructions, behaviour_top_k = 4, suspensions_top_k = 6):
     retriever = get_guidance_retriever()
     query = _compose_guidance_query(
         exclusion_reason,

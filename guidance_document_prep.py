@@ -1,11 +1,8 @@
-from __future__ import annotations
-
 import argparse
 import json
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Sequence
 
 
 BASE_DIR = Path(__file__).parent
@@ -23,9 +20,9 @@ class ChunkRecord:
     id: str
     document_id: str
     text: str
-    metadata: Dict[str, object] = field(default_factory=dict)
+    metadata: dict = field(default_factory=dict)
 
-    def as_json(self) -> str:
+    def as_json(self):
         record = {
             "id": self.id,
             "document_id": self.document_id,
@@ -38,27 +35,27 @@ class ChunkRecord:
 @dataclass
 class Paragraph:
     text: str
-    page_start: Optional[int]
-    page_end: Optional[int]
-    heading_path: Sequence[str]
+    page_start: int
+    page_end: int
+    heading_path: list
 
 
-def normalise_whitespace(value: str) -> str:
+def normalise_whitespace(value):
     collapsed = re.sub(r"\s+", " ", value.strip())
     return collapsed
 
 
-def split_text_by_sentences(text: str) -> List[str]:
+def split_text_by_sentences(text):
     # Split on sentence boundaries; keep punctuation with the sentence.
     sentence_pattern = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'“‘(\[])")
     parts = sentence_pattern.split(text)
     return [part.strip() for part in parts if part.strip()]
 
 
-def split_text_by_words(text: str, max_chars: int) -> List[str]:
+def split_text_by_words(text, max_chars):
     words = text.split()
-    chunks: List[str] = []
-    current: List[str] = []
+    chunks = []
+    current = []
     length = 0
     for word in words:
         tentative_length = length + len(word) + (1 if current else 0)
@@ -75,7 +72,7 @@ def split_text_by_words(text: str, max_chars: int) -> List[str]:
     return chunks
 
 
-def explode_long_paragraph(paragraph: Paragraph, max_chars: int) -> List[Paragraph]:
+def explode_long_paragraph(paragraph, max_chars):
     if len(paragraph.text) <= max_chars:
         return [paragraph]
 
@@ -83,8 +80,8 @@ def explode_long_paragraph(paragraph: Paragraph, max_chars: int) -> List[Paragra
     if not sentences:
         sentences = [paragraph.text]
 
-    text_chunks: List[str] = []
-    current: List[str] = []
+    text_chunks = []
+    current = []
     current_len = 0
     for sentence in sentences:
         sentence_len = len(sentence)
@@ -117,16 +114,16 @@ def explode_long_paragraph(paragraph: Paragraph, max_chars: int) -> List[Paragra
     ]
 
 
-def parse_behaviour_document(path: Path) -> List[Paragraph]:
+def parse_behaviour_document(path):
     page_number_pattern = re.compile(r"PAGE\s+(\d+)", re.IGNORECASE)
     heading_pattern = re.compile(r"^(#{1,6})\s+(.*)")
 
-    paragraphs: List[Paragraph] = []
-    current_page: Optional[int] = None
-    current_heading_path: List[str] = []
-    buffer: List[str] = []
-    buffer_page_start: Optional[int] = None
-    buffer_page_end: Optional[int] = None
+    paragraphs = []
+    current_page = None
+    current_heading_path = []
+    buffer = []
+    buffer_page_start = None
+    buffer_page_end = None
 
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         line = raw_line.rstrip()
@@ -206,33 +203,33 @@ def parse_behaviour_document(path: Path) -> List[Paragraph]:
     return paragraphs
 
 
-def chunk_behaviour_paragraphs(paragraphs: Sequence[Paragraph]) -> List[ChunkRecord]:
-    exploded: List[Paragraph] = []
+def chunk_behaviour_paragraphs(paragraphs):
+    exploded = []
     for paragraph in paragraphs:
         exploded.extend(explode_long_paragraph(paragraph, BEHAVIOUR_MAX_CHARS))
     paragraphs = exploded
 
-    chunks: List[ChunkRecord] = []
-    buffer: List[str] = []
-    buffer_headings: Sequence[str] = ()
-    buffer_page_start: Optional[int] = None
-    buffer_page_end: Optional[int] = None
-    current_top_heading: Optional[str] = None
+    chunks = []
+    buffer = []
+    buffer_headings = ()
+    buffer_page_start = None
+    buffer_page_end = None
+    current_top_heading = None
     chunk_index = 1
 
-    def flush() -> None:
+    def flush():
         nonlocal buffer, buffer_headings, buffer_page_start, buffer_page_end, chunk_index, current_top_heading
         if not buffer:
             return
         heading_path = [h for h in buffer_headings if h]
         heading_descriptor = " > ".join(heading_path)
-        text_parts: List[str] = []
+        text_parts = []
         if heading_descriptor:
             text_parts.append(heading_descriptor)
         text_parts.append("\n\n".join(buffer))
         chunk_text = "\n\n".join(text_parts).strip()
         chunk_id = f"behaviour-{chunk_index:04d}"
-        metadata: Dict[str, object] = {
+        metadata = {
             "source": "behaviour_in_schools",
             "heading_hierarchy": heading_path,
             "page_start": buffer_page_start,
@@ -287,18 +284,18 @@ def chunk_behaviour_paragraphs(paragraphs: Sequence[Paragraph]) -> List[ChunkRec
 @dataclass
 class ClauseRecord:
     clause_number: str
-    text_lines: List[str]
-    heading_path: Sequence[str]
+    text_lines: list
+    heading_path: list
 
-    def as_chunk(self, index: int) -> ChunkRecord:
+    def as_chunk(self, index):
         heading_descriptor = " > ".join([h for h in self.heading_path if h])
         body = normalise_whitespace(" ".join(self.text_lines))
-        text_parts: List[str] = []
+        text_parts = []
         if heading_descriptor:
             text_parts.append(heading_descriptor)
         text_parts.append(body)
         text = "\n\n".join(text_parts).strip()
-        metadata: Dict[str, object] = {
+        metadata = {
             "source": "suspensions_guidance",
             "clause_number": self.clause_number,
             "heading_hierarchy": [h for h in self.heading_path if h],
@@ -312,13 +309,13 @@ class ClauseRecord:
         )
 
 
-def parse_suspensions_document(path: Path) -> List[ClauseRecord]:
+def parse_suspensions_document(path):
     heading_pattern = re.compile(r"^(#{1,6})\s+(.*)")
     clause_pattern = re.compile(r"^(\d+)\.\s+(.*)")
 
-    current_heading_path: List[str] = []
-    current_clause: Optional[ClauseRecord] = None
-    clauses: List[ClauseRecord] = []
+    current_heading_path = []
+    current_clause = None
+    clauses = []
 
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         line = raw_line.rstrip()
@@ -368,7 +365,7 @@ def parse_suspensions_document(path: Path) -> List[ClauseRecord]:
     return clauses
 
 
-def write_jsonl(chunks: Iterable[ChunkRecord], output_path: Path) -> None:
+def write_jsonl(chunks, output_path):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as f:
         for chunk in chunks:
@@ -376,14 +373,14 @@ def write_jsonl(chunks: Iterable[ChunkRecord], output_path: Path) -> None:
             f.write("\n")
 
 
-def build_behaviour_chunks() -> List[ChunkRecord]:
+def build_behaviour_chunks():
     paragraphs = parse_behaviour_document(BEHAVIOUR_SOURCE)
     return chunk_behaviour_paragraphs(paragraphs)
 
 
-def build_suspensions_chunks() -> List[ChunkRecord]:
+def build_suspensions_chunks():
     clauses = parse_suspensions_document(SUSPENSIONS_SOURCE)
-    chunks: List[ChunkRecord] = []
+    chunks = []
     for index, clause in enumerate(clauses, start=1):
         chunks.append(clause.as_chunk(index))
     return chunks

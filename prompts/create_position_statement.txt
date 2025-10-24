@@ -23,7 +23,7 @@ POSITION STATEMENT GROUNDS (JSON input from tool)
 {position_statement_grounds}
 
 TASK
-Using the material above, produce 4–6 grounds of argument. Each ground must include 3–5 bullet points. You must select the most relevant grounds from the provided list and, if justified by the facts, add your own grounds.F or each selected ground, analyse which conditions apply and build your argument using the provided suggested wordings and guidance. If you choose your own ground title, keep it in the same style as others (do not reference paragraphs in the title).
+Using the material above, produce 4–6 grounds of argument. Each ground must include 3–5 bullet points. You must select the most relevant grounds from the provided list and, if justified by the facts, add your own grounds. For each selected ground, analyse which conditions apply and build your argument using the provided suggested wordings and guidance. If you choose your own ground title, keep it in the same style as others.
 
 STRICT OUTPUT FORMAT
 Return a JSON object with this exact shape:

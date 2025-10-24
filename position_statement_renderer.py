@@ -1,12 +1,9 @@
-from __future__ import annotations
-
 import json
 import re
 import subprocess
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
 
 
 LATEX_SPECIAL_CHARS = {
@@ -36,13 +33,13 @@ ANGLE_PLACEHOLDER_PATTERN = re.compile(r"<<(" + "|".join(PLACEHOLDER_NAMES) + r"
 
 @dataclass
 class RenderedPositionStatement:
-    json_payload: Dict[str, Any]
+    json_payload: dict
     tex_path: Path
     pdf_path: Path
     log_path: Path
 
 
-def escape_latex(value: str) -> str:
+def escape_latex(value):
     """Escape LaTeX special characters in the provided string."""
     if value is None:
         return ""
@@ -55,15 +52,15 @@ def escape_latex(value: str) -> str:
     return "".join(escaped)
 
 
-def replace_newlines(value: str) -> str:
+def replace_newlines(value):
     """Convert newlines to LaTeX line breaks."""
     return value.replace("\r\n", "\n").replace("\r", "\n").replace("\n", r"\\ ")
 
 
-def resolve_placeholders(text: str, values: Dict[str, str]) -> str:
+def resolve_placeholders(text, values):
     """Replace placeholder tokens such as [CHILD_NAME] or <<CHILD_NAME>>."""
 
-    def replace_match(match: re.Match[str]) -> str:
+    def replace_match(match):
         placeholder = match.group(1)
         replacement = values.get(placeholder) or ""
         return replacement
@@ -73,7 +70,7 @@ def resolve_placeholders(text: str, values: Dict[str, str]) -> str:
     return text
 
 
-def extract_json_from_response(raw_response: str) -> Dict[str, Any]:
+def extract_json_from_response(raw_response):
     """Extract a JSON object from an LLM response that may use fenced code blocks."""
     if not raw_response:
         raise ValueError("Empty response from language model.")
@@ -105,7 +102,7 @@ def extract_json_from_response(raw_response: str) -> Dict[str, Any]:
         raise ValueError(f"Unable to parse JSON position statement: {exc}\n\nRaw JSON text:\n{json_text}")
 
 
-def _attempt_json_fixes(json_text: str) -> str:
+def _attempt_json_fixes(json_text):
     """Attempt to fix common JSON issues in LLM-generated JSON."""
     fixed = json_text
     
@@ -134,8 +131,8 @@ def _attempt_json_fixes(json_text: str) -> str:
     return fixed
 
 
-def _format_ground_titles(grounds: List[Dict[str, Any]], placeholder_values: Dict[str, str]) -> str:
-    items: List[str] = []
+def _format_ground_titles(grounds, placeholder_values):
+    items = []
     for ground in grounds:
         title = ground.get("ground_title", "")
         resolved_title = resolve_placeholders(title, placeholder_values)
@@ -144,8 +141,8 @@ def _format_ground_titles(grounds: List[Dict[str, Any]], placeholder_values: Dic
     return "\n".join(items)
 
 
-def _format_ground_content(grounds: List[Dict[str, Any]], placeholder_values: Dict[str, str]) -> str:
-    sections: List[str] = []
+def _format_ground_content(grounds, placeholder_values):
+    sections = []
     for idx, ground in enumerate(grounds):
         number = ground.get("ground_number")
         title = ground.get("ground_title", "")
@@ -161,7 +158,7 @@ def _format_ground_content(grounds: List[Dict[str, Any]], placeholder_values: Di
             else "[label=\\arabic*., leftmargin=6ex, resume*=main]"
         )
 
-        bullet_lines: List[str] = []
+        bullet_lines = []
         for bullet in bullets:
             content = bullet.get("content", "")
             reference = bullet.get("reference")
@@ -207,20 +204,20 @@ def _format_ground_content(grounds: List[Dict[str, Any]], placeholder_values: Di
     return "\n\n".join(sections)
 
 
-def _load_template(template_path: Path) -> str:
+def _load_template(template_path):
     if not template_path.exists():
         raise FileNotFoundError(f"Template not found: {template_path}")
     return template_path.read_text(encoding="utf-8")
 
 
-def _write_tex_file(tex_content: str, output_dir: Path, stem: str) -> Path:
+def _write_tex_file(tex_content, output_dir, stem):
     output_dir.mkdir(parents=True, exist_ok=True)
     tex_path = output_dir / f"{stem}.tex"
     tex_path.write_text(tex_content, encoding="utf-8")
     return tex_path
 
 
-def _compile_tex_to_pdf(tex_path: Path, output_dir: Path) -> Tuple[Path, Path]:
+def _compile_tex_to_pdf(tex_path, output_dir):
     command = [
         "pdflatex",
         "-interaction=nonstopmode",
@@ -247,11 +244,11 @@ def _compile_tex_to_pdf(tex_path: Path, output_dir: Path) -> Tuple[Path, Path]:
 
 
 def render_position_statement_pdf(
-    position_statement: Dict[str, Any],
-    user_details: Dict[str, str],
-    template_path: Path = Path("documents/position_statement_output_template.tex"),
-    output_dir: Path = Path("output") / "position_statements",
-) -> RenderedPositionStatement:
+    position_statement,
+    user_details,
+    template_path=Path("documents/position_statement_output_template.tex"),
+    output_dir=Path("output") / "position_statements",
+):
     template_text = _load_template(template_path)
 
     placeholder_values = {

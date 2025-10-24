@@ -1,11 +1,14 @@
-from __future__ import annotations
+import os
 
-from typing import Any, Dict, List
+try:
+    import streamlit as st
+    HAS_STREAMLIT = True
+except ImportError:
+    HAS_STREAMLIT = False
 
-
-def compute_background_summary(responses: Dict[str, Any]) -> List[str]:
+def compute_background_summary(responses):
     """Build a background summary list similar to the front-end helper."""
-    summary: List[str] = []
+    summary = []
 
     is_send = str(responses.get("is_send", "")).strip().lower() == "yes"
     send_details = (responses.get("send_details") or "").strip()
@@ -50,3 +53,47 @@ def compute_background_summary(responses: Dict[str, Any]) -> List[str]:
         summary.append("No personal issues mentioned.")
 
     return summary
+
+def _get_ollama_api_key():
+    """Load the Ollama API key from environment variables or Streamlit secrets."""
+    api_key = os.getenv("OLLAMA_API_KEY")
+    if api_key:
+        return api_key
+        
+    OLLAMA_API_KEY = st.secrets["ollama"]["api_key"]
+    if OLLAMA_API_KEY:
+        return OLLAMA_API_KEY
+        
+    if HAS_STREAMLIT and "ollama_api_key" in st.secrets:
+        secret_value = st.secrets["ollama_api_key"]
+        if isinstance(secret_value, str):
+            return secret_value
+        raise TypeError("Streamlit secret 'ollama_api_key' must be a string.")
+    raise RuntimeError(
+        "Ollama API key is not configured. Set the OLLAMA_API_KEY environment variable "
+        "or define st.secrets['ollama_api_key']."
+    )
+
+def _normalise_context(context):
+    """Ensure all prompt variables are strings to keep str.format happy."""
+    normalised = {}
+    for key, value in context.items():
+        if value is None:
+            normalised[key] = "Not provided"
+        else:
+            normalised[key] = str(value)
+    return normalised
+
+
+def _compose_guidance_query(exclusion_reason, school_facts, student_perspective, background_summary, stage_info, other_information_provided, exclusion_letter_date, specific_instructions):
+    parts = [
+        exclusion_reason,
+        school_facts,
+        student_perspective,
+        background_summary,
+        stage_info,
+        other_information_provided,
+        exclusion_letter_date,
+        specific_instructions,
+    ]
+    return "\n\n".join(part.strip() for part in parts if part and part.strip())

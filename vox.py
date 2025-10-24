@@ -6,7 +6,6 @@ from pathlib import Path
 
 import streamlit as st
 from datetime import date, datetime, timezone
-from typing import Any, Dict
 import pytz
 
 try:
@@ -27,7 +26,7 @@ from vox_extract import extract_all, generate_position_statement
 SHEETS_SCOPES = ("https://www.googleapis.com/auth/spreadsheets",)
 
 
-def _load_service_account_info() -> Dict[str, Any]:
+def _load_service_account_info():
     if "google_service_account" in st.secrets:
         info = st.secrets["google_service_account"]
         if isinstance(info, str):
@@ -51,7 +50,7 @@ def _load_service_account_info() -> Dict[str, Any]:
     )
 
 
-def _get_spreadsheet_id() -> str:
+def _get_spreadsheet_id():
     # Check if it's nested in google_service_account section
     if "google_service_account" in st.secrets:
         service_account_info = st.secrets["google_service_account"]
@@ -72,7 +71,7 @@ def _get_spreadsheet_id() -> str:
     )
 
 
-def _get_spreadsheet_range() -> str:
+def _get_spreadsheet_range():
     # Check if it's nested in google_service_account section
     if "google_service_account" in st.secrets:
         service_account_info = st.secrets["google_service_account"]
@@ -86,7 +85,7 @@ def _get_spreadsheet_range() -> str:
     return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:J")
 
 
-def append_feedback_to_sheet(feedback: Dict[str, Any]) -> None:
+def append_feedback_to_sheet(feedback):
     if not HAS_GOOGLE_AUTH:
         raise ImportError(
             "google-auth is required to talk to the Google Sheets API. "
@@ -129,9 +128,6 @@ def append_feedback_to_sheet(feedback: Dict[str, Any]) -> None:
 
 st.set_page_config(page_title="Segmented Chatbot", page_icon="💬", layout="centered")
 
-# ---------------------------
-# Configuration (edit me)
-# ---------------------------
 SEGMENTS = [
     {"id": "about_exclusion", "title": "About the Exclusion", "color": "#E3F2FD"},  # light blue
     {"id": "about_young_person", "title": "About the Young Person", "color": "#E8F5E9"},  # light green
@@ -183,7 +179,7 @@ QUESTIONS = {
 # ---------------------------
 # Helpers
 # ---------------------------
-def heading_bubble(text: str, color: str):
+def heading_bubble(text, color):
     st.markdown(
         f"""
         <style>
@@ -632,4 +628,3 @@ if st.session_state.step == steps_total - 1:
             else:
                 st.success("Feedback recorded successfully.")
                 st.balloons()
-
