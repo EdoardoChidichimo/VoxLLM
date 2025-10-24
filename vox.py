@@ -1,5 +1,4 @@
 # app.py
-import base64
 import json
 import os
 import uuid
@@ -367,8 +366,9 @@ if st.session_state.step == steps_total - 1:
     exclusion_date = answers.get("exclusion_date")
     exclusion_letter_date = answers.get("exclusion_letter_date")
 
-    # “Submit” button demonstrating you can now process/store/send the data
+    # "Submit" button demonstrating you can now process/store/send the data
     if st.button("Submit all data"):
+        # Store the processed data in session state
         school_facts, exclusion_reason, student_perspective = extract_all(
             exclusion_letter_content,
             school_version_events,
@@ -488,12 +488,6 @@ if st.session_state.step == steps_total - 1:
                 mime="application/pdf",
             )
 
-            st.subheader("Preview")
-            pdf_base64 = base64.b64encode(pdf_bytes).decode("utf-8")
-            st.markdown(
-                f"<iframe src='data:application/pdf;base64,{pdf_base64}' width='100%' height='800px'></iframe>",
-                unsafe_allow_html=True,
-            )
 
             st.caption(f"LaTeX source: {rendered_statement.tex_path}")
             st.caption(f"Compilation log: {rendered_statement.log_path}")
@@ -544,4 +538,59 @@ if st.session_state.step == steps_total - 1:
                 except Exception as exc:  # pragma: no cover - runtime feedback
                     st.error(f"Could not record feedback: {exc}")
                 else:
-                    st.success("Feedback submitted. Thank you for helping us improve!")
+                    st.success("Feedback recorded successfully.")
+                    st.balloons()
+
+    # Show PDF and review form if data has been submitted
+    if "latest_run" in st.session_state:
+        st.divider()
+        st.subheader("Generated Position Statement")
+        
+        # Display the stored PDF data
+        if "latest_pdf_bytes" in st.session_state and "latest_pdf_name" in st.session_state:
+            st.download_button(
+                label="Download Position Statement PDF",
+                data=st.session_state["latest_pdf_bytes"],
+                file_name=st.session_state["latest_pdf_name"],
+                mime="application/pdf",
+            )
+            
+            st.caption(f"PDF: {st.session_state['latest_pdf_name']}")
+        
+        # Display the review form
+        st.subheader("Reviewer Evaluation")
+        with st.form("evaluation_form"):
+            run_id = st.session_state["latest_run"]["run_id"]
+            st.markdown(f"Run ID: `{run_id}`")
+            accuracy_score = st.slider("Accuracy of factual content", 0, 10, 5)
+            relevance_score = st.slider("Relevance of arguments", 0, 10, 5)
+            writing_score = st.slider("Writing style and clarity", 0, 10, 5)
+            presentation_score = st.slider("Presentation of document", 0, 10, 5)
+            ease_score = st.slider("Ease of using this tool", 0, 10, 5)
+            reviewer_remarks = st.text_area("Additional comments or specific issues", height=120)
+            submitted_feedback = st.form_submit_button("Submit feedback")
+
+        if submitted_feedback:
+            timestamp_utc = datetime.now(datetime.timezone.utc).isoformat()
+            feedback_payload = {
+                "run_id": run_id,
+                "timestamp_utc": timestamp_utc,
+                "stage": st.session_state["latest_run"]["stage"],
+                "accuracy": accuracy_score,
+                "relevance": relevance_score,
+                "writing_style": writing_score,
+                "presentation": presentation_score,
+                "ease_of_use": ease_score,
+                "remarks": reviewer_remarks,
+                "pdf_filename": st.session_state["latest_run"]["pdf_filename"],
+            }
+            st.write("Feedback payload:", feedback_payload)
+
+            try:
+                append_feedback_to_sheet(feedback_payload)
+            except Exception as exc:  # pragma: no cover - runtime feedback
+                st.error(f"Could not record feedback: {exc}")
+            else:
+                st.success("Feedback recorded successfully.")
+                st.balloons()
+
