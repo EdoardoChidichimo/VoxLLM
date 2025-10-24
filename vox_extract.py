@@ -88,6 +88,7 @@ def call_llm(system_message: str, prompt: str) -> str:
             {"role": "user", "content": prompt},
         ],
         "stream": False,
+        "temperature": 0.2,
     }
 
     response = requests.post(OLLAMA_API_URL, headers=headers, json=payload, timeout=60)

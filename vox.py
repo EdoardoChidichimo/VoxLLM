@@ -168,7 +168,7 @@ QUESTIONS = {
     ],
     "about_procedure": [
         {"key": "stage", "prompt": "What stage of procedure is the exclusion at?", "type": "radio", "options": ["Governors Panel", "Independent Review Panel"]},
-        {"key": "governor_procedure_info", "prompt": "Please provide details about the governor's procedure.", "type": "textarea", "condition": lambda a: a.get("stage") == "Independent Review Panel"},
+        {"key": "governor_procedure_info", "prompt": "Please provide details about any procedural issues during the Governors meeting. Did you have any concerns about fairness, time limits, or anything else that seemed odd?", "type": "textarea", "condition": lambda a: a.get("stage") == "Independent Review Panel"},
         {"key": "other_information_provided", "prompt": "Are there any other information that you would like to provide?", "type": "textarea"},
     ],
     "document_details": [
@@ -221,9 +221,9 @@ def ask_question(q, answers):
 
     # Render appropriate widget
     if qtype == "text":
-        val = st.text_input(prompt, key=key, value=answers.get(key, ""))
+        val = st.text_input(prompt, key=key, value=answers.get(key, ""), help="")
     elif qtype == "textarea":
-        val = st.text_area(prompt, key=key, value=answers.get(key, ""))
+        val = st.text_area(prompt, key=key, value=answers.get(key, ""), help="")
     elif qtype == "number":
         val = st.number_input(prompt, key=key, value=answers.get(key, 0), step=1)
     elif qtype == "select":
@@ -480,9 +480,9 @@ if st.session_state.step == steps_total - 1:
 
             st.subheader("Guidance context used for RAG")
             st.write("Behaviour in Schools excerpts:")
-            st.text_area("Behaviour Guidance Context", guidance_context["behaviour_in_schools"], height=200)
+            st.text_area("Behaviour Guidance Context", guidance_context["behaviour_in_schools"], height=200, help="")
             st.write("Suspensions guidance excerpts:")
-            st.text_area("Suspensions Guidance Context", guidance_context["suspensions"], height=200)
+            st.text_area("Suspensions Guidance Context", guidance_context["suspensions"], height=200, help="")
 
             st.subheader("Parsed position statement JSON")
             st.json(rendered_statement.json_payload)
@@ -520,8 +520,8 @@ if st.session_state.step == steps_total - 1:
                 
                 # Reviewer information
                 st.markdown("**Reviewer Information**")
-                reviewer_name = st.text_input("Your name", placeholder="Enter your full name")
-                reviewer_email = st.text_input("Your email", placeholder="Enter your email address")
+                reviewer_name = st.text_input("Your name", placeholder="Enter your full name", help="")
+                reviewer_email = st.text_input("Your email", placeholder="Enter your email address", help="")
                 
                 st.markdown("**Evaluation Scores**")
                 accuracy_score = st.slider("Accuracy of factual content", 0, 10, 5)
@@ -529,7 +529,7 @@ if st.session_state.step == steps_total - 1:
                 writing_score = st.slider("Writing style and clarity", 0, 10, 5)
                 presentation_score = st.slider("Presentation of document", 0, 10, 5)
                 ease_score = st.slider("Ease of using this tool", 0, 10, 5)
-                reviewer_remarks = st.text_area("Additional comments or specific issues", height=120)
+                reviewer_remarks = st.text_area("Additional comments or specific issues", height=120, help="")
                 submitted_feedback = st.form_submit_button("Submit feedback")
 
             if submitted_feedback:

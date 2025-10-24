@@ -84,10 +84,54 @@ def extract_json_from_response(raw_response: str) -> Dict[str, Any]:
     else:
         json_text = raw_response.strip()
 
+    # Try to parse the JSON as-is first
     try:
         return json.loads(json_text)
     except json.JSONDecodeError as exc:
-        raise ValueError(f"Unable to parse JSON position statement: {exc}") from exc
+        # If parsing fails, try to fix common issues
+        print(f"JSON parsing failed: {exc}")
+        print(f"Raw JSON text (first 500 chars): {json_text[:500]}")
+        
+        # Try to fix common JSON issues
+        fixed_json = _attempt_json_fixes(json_text)
+        if fixed_json != json_text:
+            print("Attempting to fix JSON issues...")
+            try:
+                return json.loads(fixed_json)
+            except json.JSONDecodeError as fixed_exc:
+                print(f"Fixed JSON still failed: {fixed_exc}")
+        
+        # If all else fails, show the problematic JSON for debugging
+        raise ValueError(f"Unable to parse JSON position statement: {exc}\n\nRaw JSON text:\n{json_text}")
+
+
+def _attempt_json_fixes(json_text: str) -> str:
+    """Attempt to fix common JSON issues in LLM-generated JSON."""
+    fixed = json_text
+    
+    # Fix missing commas between array elements
+    # Look for patterns like "}" followed by "{" without a comma
+    fixed = re.sub(r'}\s*\n\s*{', '},\n{', fixed)
+    
+    # Fix missing commas between object properties
+    # Look for patterns like '"key": value' followed by '"key": value' without comma
+    fixed = re.sub(r'("\s*:\s*[^,}\]]+)\s*\n\s*(")', r'\1,\n\2', fixed)
+    
+    # Fix specific comma delimiter issues - look for missing commas before closing quotes
+    # Pattern: "value" followed by "key" without comma
+    fixed = re.sub(r'("\s*)\n\s*(")', r'\1,\n\2', fixed)
+    
+    # Fix missing commas after string values in arrays/objects
+    # Pattern: "string" followed by "string" without comma
+    fixed = re.sub(r'("\s*)\s*\n\s*(")', r'\1,\n\2', fixed)
+    
+    # Fix trailing commas before closing braces/brackets
+    fixed = re.sub(r',(\s*[}\]])', r'\1', fixed)
+    
+    # Fix missing quotes around keys (basic cases)
+    fixed = re.sub(r'(\w+)\s*:', r'"\1":', fixed)
+    
+    return fixed
 
 
 def _format_ground_titles(grounds: List[Dict[str, Any]], placeholder_values: Dict[str, str]) -> str:
