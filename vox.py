@@ -3,6 +3,7 @@ import json
 import os
 import uuid
 from pathlib import Path
+from collections.abc import Mapping
 
 import streamlit as st
 from datetime import date, datetime, timezone
@@ -54,8 +55,17 @@ def _get_spreadsheet_id():
     # Check if it's nested in google_service_account section
     if "google_service_account" in st.secrets:
         service_account_info = st.secrets["google_service_account"]
-        if isinstance(service_account_info, dict) and "google_sheets_spreadsheet_id" in service_account_info:
-            return service_account_info["google_sheets_spreadsheet_id"]
+        if isinstance(service_account_info, str):
+            try:
+                parsed_info = json.loads(service_account_info)
+            except json.JSONDecodeError:
+                parsed_info = {}
+        elif isinstance(service_account_info, Mapping):
+            parsed_info = dict(service_account_info)
+        else:
+            parsed_info = {}
+        if "google_sheets_spreadsheet_id" in parsed_info:
+            return parsed_info["google_sheets_spreadsheet_id"]
     
     # Check if it's at root level
     if "google_sheets_spreadsheet_id" in st.secrets:
@@ -75,8 +85,17 @@ def _get_spreadsheet_range():
     # Check if it's nested in google_service_account section
     if "google_service_account" in st.secrets:
         service_account_info = st.secrets["google_service_account"]
-        if isinstance(service_account_info, dict) and "google_sheets_range" in service_account_info:
-            return service_account_info["google_sheets_range"]
+        if isinstance(service_account_info, str):
+            try:
+                parsed_info = json.loads(service_account_info)
+            except json.JSONDecodeError:
+                parsed_info = {}
+        elif isinstance(service_account_info, Mapping):
+            parsed_info = dict(service_account_info)
+        else:
+            parsed_info = {}
+        if "google_sheets_range" in parsed_info:
+            return parsed_info["google_sheets_range"]
     
     # Check if it's at root level
     if "google_sheets_range" in st.secrets:
@@ -509,6 +528,9 @@ if st.session_state.step == steps_total - 1:
             }
             st.session_state["latest_pdf_bytes"] = pdf_bytes
             st.session_state["latest_pdf_name"] = download_name
+            st.session_state["latest_json_payload"] = position_payload
+            st.session_state["latest_raw_response"] = position_statement
+            st.session_state["latest_user_details"] = user_details
 
             st.subheader("Reviewer Evaluation")
             with st.form("evaluation_form"):
@@ -580,6 +602,21 @@ if st.session_state.step == steps_total - 1:
             )
             
             st.caption(f"PDF: {st.session_state['latest_pdf_name']}")
+        
+        # Display the stored JSON payload for debugging
+        if "latest_json_payload" in st.session_state:
+            st.subheader("LLM JSON Response (for debugging)")
+            st.json(st.session_state["latest_json_payload"])
+        
+        # Display the raw LLM response for debugging
+        if "latest_raw_response" in st.session_state:
+            st.subheader("Raw LLM Response (for debugging)")
+            st.text_area("Raw Response", st.session_state["latest_raw_response"], height=300, help="This is the raw response from the LLM before JSON parsing")
+        
+        # Display the user details for debugging
+        if "latest_user_details" in st.session_state:
+            st.subheader("User Details (for debugging)")
+            st.json(st.session_state["latest_user_details"])
         
         # Display the review form
         st.subheader("Reviewer Evaluation")

@@ -259,6 +259,14 @@ def render_position_statement_pdf(
         "EXCLUSION_LETTER_DATE": user_details.get("exclusion_letter_date") or "",
         "STAGE": user_details.get("stage") or "",
     }
+    
+    # Debug output to help identify placeholder substitution issues
+    print("=== PLACEHOLDER SUBSTITUTION DEBUG ===")
+    print(f"User details received: {user_details}")
+    print(f"Placeholder values: {placeholder_values}")
+    for key, value in placeholder_values.items():
+        if not value:
+            print(f"WARNING: {key} is empty!")
 
     escaped_placeholders = {
         key: replace_newlines(escape_latex(value))
@@ -283,6 +291,18 @@ def render_position_statement_pdf(
     tex_content = template_text
     for placeholder, value in replacements.items():
         tex_content = tex_content.replace(placeholder, value)
+    
+    # Debug: Check if any placeholders remain
+    remaining_placeholders = []
+    for placeholder in ["@@CHILD_NAME@@", "@@PARENT_NAME@@", "@@SCHOOL_NAME@@", 
+                       "@@EXCLUSION_DATE@@", "@@EXCLUSION_LETTER_DATE@@", "@@STAGE@@"]:
+        if placeholder in tex_content:
+            remaining_placeholders.append(placeholder)
+    
+    if remaining_placeholders:
+        print(f"ERROR: Placeholders not substituted: {remaining_placeholders}")
+    else:
+        print("SUCCESS: All placeholders successfully substituted")
 
     unique_stem = f"position_statement_{uuid.uuid4().hex[:8]}"
     tex_path = _write_tex_file(tex_content, output_dir, unique_stem)
