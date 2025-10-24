@@ -122,7 +122,7 @@ def _get_spreadsheet_range():
     if root_value:
         return root_value
     
-    return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:J")
+    return os.getenv("GOOGLE_SHEETS_RANGE", "Feedback!A:L")
 
 
 def append_feedback_to_sheet(feedback):
@@ -144,6 +144,8 @@ def append_feedback_to_sheet(feedback):
     values = [[
         feedback["run_id"],
         feedback["timestamp_utc"],
+        feedback.get("reviewer_name", ""),
+        feedback.get("reviewer_email", ""),
         feedback["stage"],
         feedback["accuracy"],
         feedback["relevance"],
