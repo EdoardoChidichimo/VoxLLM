@@ -1,3 +1,4 @@
+import json
 import os
 from pathlib import Path
 
@@ -38,6 +39,11 @@ system_messages = {
         "You are a legal advocate specialising in UK school exclusion appeals. "
         "Draft a position statement grounded strictly in the provided facts, statutory guidance excerpts, and procedural information. "
         "Follow the template and citation requirements exactly."
+    ),
+    "clarification": (
+        "You are a meticulous legal fact-checker specialising in UK school exclusion cases. "
+        "Ensure that every element of the drafted grounds is supported by the family's responses. "
+        "Identify assumptions, request targeted clarifications, and update the grounds with only verified information."
     ),
 }
 
@@ -208,3 +214,42 @@ def generate_position_statement(exclusion_reason, school_facts, student_perspect
     print(guidance_context["suspensions"])
 
     return position_statement, guidance_context
+
+
+def _build_clarification_prompt(mode, user_answers, position_statement, clarification_responses):
+    """Serialise context consistently for clarification prompts."""
+    user_answers_json = json.dumps(user_answers, ensure_ascii=True, indent=2, sort_keys=True)
+    position_statement_json = json.dumps(position_statement, ensure_ascii=True, indent=2, sort_keys=True)
+    clarification_responses_json = json.dumps(clarification_responses or [], ensure_ascii=True, indent=2)
+
+    return build_prompt(
+        "clarification.txt",
+        mode=mode,
+        user_answers=user_answers_json,
+        position_statement=position_statement_json,
+        clarification_responses=clarification_responses_json,
+    )
+
+
+def generate_clarification_questions(user_answers, position_statement):
+    """Ask the LLM to flag unsupported content and request clarifications."""
+    system_message = system_messages["clarification"]
+    prompt = _build_clarification_prompt(
+        mode="questions",
+        user_answers=user_answers,
+        position_statement=position_statement,
+        clarification_responses=[],
+    )
+    return call_llm(system_message, prompt)
+
+
+def update_position_statement_with_clarifications(user_answers, position_statement, clarification_responses):
+    """Update the position statement grounds using follow-up information from the user."""
+    system_message = system_messages["clarification"]
+    prompt = _build_clarification_prompt(
+        mode="update",
+        user_answers=user_answers,
+        position_statement=position_statement,
+        clarification_responses=clarification_responses,
+    )
+    return call_llm(system_message, prompt)

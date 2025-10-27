@@ -30,7 +30,12 @@ from position_statement_renderer import (
     render_position_statement_pdf,
 )
 from vox_helpers import compute_background_summary
-from vox_extract import extract_all, generate_position_statement
+from vox_extract import (
+    extract_all,
+    generate_position_statement,
+    generate_clarification_questions,
+    update_position_statement_with_clarifications,
+)
 
 SHEETS_SCOPES = ("https://www.googleapis.com/auth/spreadsheets",)
 
@@ -329,6 +334,122 @@ def segment_done(segment_id, answers):
                 return False
     return True
 
+
+SENSITIVE_ANSWER_KEYS = {
+    "child_name",
+    "parent_name",
+    "school_name",
+    "exclusion_date",
+    "exclusion_letter_date",
+}
+
+
+def _serialise_value(value):
+    if isinstance(value, (datetime, date)):
+        return value.isoformat()
+    if isinstance(value, Mapping):
+        return {k: _serialise_value(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_serialise_value(item) for item in value]
+    if isinstance(value, tuple):
+        return [_serialise_value(item) for item in value]
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    return str(value)
+
+
+def _serialise_answers(raw_answers):
+    """Convert collected answers into a JSON-serialisable structure."""
+    filtered = {
+        key: value
+        for key, value in raw_answers.items()
+        if key not in SENSITIVE_ANSWER_KEYS
+    }
+    return {key: _serialise_value(value) for key, value in filtered.items()}
+
+
+def _finalize_position_statement(workflow_state):
+    """Generate the PDF, surface context, and persist the latest run metadata."""
+    position_payload = workflow_state["position_payload"]
+    guidance_context = workflow_state["guidance_context"]
+    user_details = workflow_state["user_details"]
+    stage = workflow_state.get("stage") or ""
+    school_facts = workflow_state.get("school_facts") or ""
+    exclusion_reason = workflow_state.get("exclusion_reason") or ""
+    student_perspective = workflow_state.get("student_perspective") or ""
+    position_statement_raw = workflow_state.get("position_statement_raw") or ""
+
+    try:
+        rendered_statement = render_position_statement_pdf(
+            position_payload,
+            user_details=user_details,
+        )
+    except FileNotFoundError as exc:
+        st.error(str(exc))
+        return
+    except RuntimeError as exc:
+        st.error(str(exc))
+        return
+
+    st.success("Position statement PDF generated successfully.")
+
+    st.subheader("Guidance context used for RAG")
+    st.write("Behaviour in Schools excerpts:")
+    st.text_area(
+        "Behaviour Guidance Context",
+        guidance_context["behaviour_in_schools"],
+        height=200,
+        help="",
+    )
+    st.write("Suspensions guidance excerpts:")
+    st.text_area(
+        "Suspensions Guidance Context",
+        guidance_context["suspensions"],
+        height=200,
+        help="",
+    )
+
+    st.subheader("Parsed position statement JSON")
+    st.json(rendered_statement.json_payload)
+
+    run_id = uuid.uuid4().hex
+    pdf_bytes = rendered_statement.pdf_path.read_bytes()
+    download_name = rendered_statement.pdf_path.name
+    st.download_button(
+        label="Download Position Statement PDF",
+        data=pdf_bytes,
+        file_name=download_name,
+        mime="application/pdf",
+        key=f"download_pdf_{run_id}",
+    )
+
+    st.caption(f"LaTeX source: {rendered_statement.tex_path}")
+    st.caption(f"Compilation log: {rendered_statement.log_path}")
+
+    st.session_state["latest_run"] = {
+        "run_id": run_id,
+        "stage": stage,
+        "child_name": user_details.get("child_name", ""),
+        "parent_name": user_details.get("parent_name", ""),
+        "school_name": user_details.get("school_name", ""),
+        "exclusion_date": user_details.get("exclusion_date", ""),
+        "exclusion_letter_date": user_details.get("exclusion_letter_date", ""),
+        "pdf_filename": download_name,
+    }
+    st.session_state["latest_pdf_bytes"] = pdf_bytes
+    st.session_state["latest_pdf_name"] = download_name
+    st.session_state["latest_json_payload"] = position_payload
+    st.session_state["latest_raw_response"] = position_statement_raw
+    st.session_state["latest_user_details"] = user_details
+
+    for session_key in list(st.session_state.keys()):
+        if session_key.startswith("clarification_answer_"):
+            del st.session_state[session_key]
+
+    workflow_state["finalized"] = True
+    st.session_state["position_workflow"] = workflow_state
+    st.session_state.pop("clarification_state", None)
+
 # ---------------------------
 # State
 # ---------------------------
@@ -411,7 +532,12 @@ if st.session_state.step == steps_total - 1:
 
     # "Submit" button demonstrating you can now process/store/send the data
     if st.button("Submit all data"):
-        # Store the processed data in session state
+        st.session_state.pop("clarification_state", None)
+        st.session_state.pop("position_workflow", None)
+        for session_key in list(st.session_state.keys()):
+            if session_key.startswith("clarification_answer_"):
+                del st.session_state[session_key]
+
         school_facts, exclusion_reason, student_perspective = extract_all(
             exclusion_letter_content,
             school_version_events,
@@ -427,7 +553,6 @@ if st.session_state.step == steps_total - 1:
         st.success(f"Exclusion reason: {exclusion_reason}")
         st.success(f"Student perspective: {student_perspective}")
 
-        # Store summaries in session state for persistent display
         st.session_state["extracted_summaries"] = {
             "school_facts": school_facts,
             "exclusion_reason": exclusion_reason,
@@ -500,6 +625,8 @@ if st.session_state.step == steps_total - 1:
             st.error(f"Could not parse the position statement JSON: {exc}")
             st.stop()
 
+        serialised_answers = _serialise_answers(answers)
+
         user_details = {
             "child_name": child_name or "",
             "parent_name": parent_name or "",
@@ -509,106 +636,122 @@ if st.session_state.step == steps_total - 1:
             "exclusion_letter_date": exclusion_letter_date_text,
         }
 
+        workflow_state = {
+            "school_facts": school_facts,
+            "exclusion_reason": exclusion_reason,
+            "student_perspective": student_perspective,
+            "background_summary_text": background_summary_text,
+            "stage_info_text": stage_info_text,
+            "other_info_text": other_info_text,
+            "exclusion_date_text": exclusion_date_text,
+            "exclusion_letter_date_text": exclusion_letter_date_text,
+            "specific_instructions": specific_instructions,
+            "position_statement_raw": position_statement,
+            "position_payload": position_payload,
+            "guidance_context": guidance_context,
+            "user_details": user_details,
+            "stage": stage or "",
+            "clarification_history": [],
+            "serialised_answers": serialised_answers,
+        }
+        st.session_state["position_workflow"] = workflow_state
+
+        clarification_raw = generate_clarification_questions(serialised_answers, position_payload)
         try:
-            rendered_statement = render_position_statement_pdf(
-                position_payload,
-                user_details=user_details,
-            )
-        except FileNotFoundError as exc:
-            st.error(str(exc))
-        except RuntimeError as exc:
-            st.error(str(exc))
-        else:
-            st.success("Position statement PDF generated successfully.")
+            clarification_payload = extract_json_from_response(clarification_raw)
+        except ValueError as exc:
+            st.error(f"Could not parse clarification response: {exc}")
+            st.stop()
 
-            st.subheader("Guidance context used for RAG")
-            st.write("Behaviour in Schools excerpts:")
-            st.text_area("Behaviour Guidance Context", guidance_context["behaviour_in_schools"], height=200, help="")
-            st.write("Suspensions guidance excerpts:")
-            st.text_area("Suspensions Guidance Context", guidance_context["suspensions"], height=200, help="")
+        workflow_state["clarification_analysis"] = clarification_payload
+        st.session_state["position_workflow"] = workflow_state
 
-            st.subheader("Parsed position statement JSON")
-            st.json(rendered_statement.json_payload)
-
-            pdf_bytes = rendered_statement.pdf_path.read_bytes()
-            download_name = rendered_statement.pdf_path.name
-            st.download_button(
-                label="Download Position Statement PDF",
-                data=pdf_bytes,
-                file_name=download_name,
-                mime="application/pdf",
-            )
-
-
-            st.caption(f"LaTeX source: {rendered_statement.tex_path}")
-            st.caption(f"Compilation log: {rendered_statement.log_path}")
-
-            run_id = uuid.uuid4().hex
-            st.session_state["latest_run"] = {
-                "run_id": run_id,
-                "stage": stage or "",
-                "child_name": child_name or "",
-                "parent_name": parent_name or "",
-                "school_name": school_name or "",
-                "exclusion_date": exclusion_date_text,
-                "exclusion_letter_date": exclusion_letter_date_text,
-                "pdf_filename": download_name,
+        clarification_questions = clarification_payload.get("clarification_questions") or []
+        needs_clarification = clarification_payload.get("needs_clarification")
+        if clarification_questions and (needs_clarification is None or needs_clarification):
+            st.session_state["clarification_state"] = {
+                "status": "awaiting_user",
+                "questions": clarification_questions,
+                "analysis": clarification_payload.get("analysis_summary", ""),
+                "raw_response": clarification_raw,
             }
-            st.session_state["latest_pdf_bytes"] = pdf_bytes
-            st.session_state["latest_pdf_name"] = download_name
-            st.session_state["latest_json_payload"] = position_payload
-            st.session_state["latest_raw_response"] = position_statement
-            st.session_state["latest_user_details"] = user_details
+            st.info("The draft grounds need clarification. Please answer the follow-up questions below.")
+        else:
+            st.session_state.pop("clarification_state", None)
+            _finalize_position_statement(workflow_state)
 
-            st.subheader("Reviewer Evaluation")
-            with st.form("evaluation_form"):
-                st.markdown(f"Run ID: `{run_id}`")
-                
-                # Reviewer information
-                st.markdown("**Reviewer Information**")
-                reviewer_name = st.text_input("Your name", placeholder="Enter your full name", help="")
-                reviewer_email = st.text_input("Your email", placeholder="Enter your email address", help="")
-                
-                st.markdown("**Evaluation Scores**")
-                accuracy_score = st.slider("Accuracy of factual content", 0, 10, 5)
-                relevance_score = st.slider("Relevance of arguments", 0, 10, 5)
-                writing_score = st.slider("Writing style and clarity", 0, 10, 5)
-                presentation_score = st.slider("Presentation of document", 0, 10, 5)
-                ease_score = st.slider("Ease of using this tool", 0, 10, 5)
-                reviewer_remarks = st.text_area("Additional comments or specific issues", height=120, help="")
-                submitted_feedback = st.form_submit_button("Submit feedback")
+    workflow_state = st.session_state.get("position_workflow")
+    clarification_state = st.session_state.get("clarification_state")
+    if workflow_state and clarification_state and clarification_state.get("status") == "awaiting_user":
+        st.divider()
+        st.subheader("Clarification questions")
+        analysis_summary = clarification_state.get("analysis")
+        if analysis_summary:
+            st.info(analysis_summary)
 
-            if submitted_feedback:
-                # Use UK timezone instead of UTC
-                uk_tz = pytz.timezone('Europe/London')
-                timestamp_uk = datetime.now(uk_tz).isoformat()
-                feedback_payload = {
-                    "run_id": run_id,
-                    "timestamp_utc": timestamp_uk,  # Note: keeping field name as timestamp_utc for compatibility
-                    "reviewer_name": reviewer_name,
-                    "reviewer_email": reviewer_email,
-                    "stage": stage or "",
-                    "accuracy": accuracy_score,
-                    "relevance": relevance_score,
-                    "writing_style": writing_score,
-                    "presentation": presentation_score,
-                    "ease_of_use": ease_score,
-                    "remarks": reviewer_remarks,
-                    "pdf_filename": download_name,
-                    "school_facts_llm": school_facts or "",
-                    "exclusion_reason_llm": exclusion_reason or "",
-                    "student_perspective_llm": student_perspective or "",
-                    "position_statement_json_llm": json.dumps(position_payload) if position_payload else "",
-                }
-                st.write("Feedback payload:", feedback_payload)
+        questions = clarification_state.get("questions") or []
+        with st.form("clarifications_form"):
+            for idx, question in enumerate(questions, start=1):
+                question_id = question.get("id") or f"clarification_{idx}"
+                prompt_text = question.get("question") or question.get("prompt") or ""
+                answer_key = f"clarification_answer_{question_id}"
+                default_value = st.session_state.get(answer_key, "")
+                st.text_area(
+                    f"{idx}. {prompt_text}",
+                    key=answer_key,
+                    value=default_value,
+                    height=140,
+                )
+            clar_submitted = st.form_submit_button("Submit clarification responses")
 
+        if clar_submitted:
+            responses_to_send = []
+            missing_questions = []
+            for idx, question in enumerate(questions, start=1):
+                question_id = question.get("id") or f"clarification_{idx}"
+                answer_key = f"clarification_answer_{question_id}"
+                answer_value = (st.session_state.get(answer_key) or "").strip()
+                if not answer_value:
+                    missing_questions.append(idx)
+                responses_to_send.append(
+                    {
+                        "id": question.get("id") or f"clarification_{idx}",
+                        "question": question.get("question") or question.get("prompt") or "",
+                        "answer": answer_value,
+                    }
+                )
+
+            if missing_questions:
+                st.error("Please answer all clarification questions before submitting.")
+            else:
+                update_raw = update_position_statement_with_clarifications(
+                    workflow_state["serialised_answers"],
+                    workflow_state["position_payload"],
+                    responses_to_send,
+                )
                 try:
-                    append_feedback_to_sheet(feedback_payload)
-                except Exception as exc:  # pragma: no cover - runtime feedback
-                    st.error(f"Could not record feedback: {exc}")
+                    update_payload = extract_json_from_response(update_raw)
+                except ValueError as exc:
+                    st.error(f"Could not parse updated grounds JSON: {exc}")
                 else:
-                    st.success("Feedback recorded successfully.")
-                    st.balloons()
+                    updated_position = (
+                        update_payload.get("updated_position_statement")
+                        or update_payload.get("position_statement")
+                        or update_payload
+                    )
+                    if not isinstance(updated_position, dict) or "grounds" not in updated_position:
+                        st.error("Updated clarification response did not include valid grounds.")
+                    else:
+                        workflow_state["position_payload"] = updated_position
+                        workflow_state["position_statement_raw"] = update_raw
+                        history_entry = {
+                            "questions": questions,
+                            "responses": responses_to_send,
+                        }
+                        workflow_state.setdefault("clarification_history", []).append(history_entry)
+                        st.session_state["position_workflow"] = workflow_state
+                        st.success("Clarifications captured. Updating the position statement...")
+                        _finalize_position_statement(workflow_state)
 
     # Show PDF and review form if data has been submitted
     if "latest_run" in st.session_state:
@@ -626,11 +769,13 @@ if st.session_state.step == steps_total - 1:
         
         # Display the stored PDF data
         if "latest_pdf_bytes" in st.session_state and "latest_pdf_name" in st.session_state:
+            existing_run_id = st.session_state["latest_run"]["run_id"]
             st.download_button(
                 label="Download Position Statement PDF",
                 data=st.session_state["latest_pdf_bytes"],
                 file_name=st.session_state["latest_pdf_name"],
                 mime="application/pdf",
+                key=f"download_cached_pdf_{existing_run_id}",
             )
             
             st.caption(f"PDF: {st.session_state['latest_pdf_name']}")
