@@ -74,6 +74,33 @@ def _get_ollama_api_key():
         "or define st.secrets['ollama_api_key']."
     )
 
+def _get_openai_api_key():
+    """Load the OpenAI API key from environment variables or Streamlit secrets."""
+    api_key = os.getenv("OPENAI_API_KEY")
+    if api_key:
+        return api_key
+
+    if HAS_STREAMLIT:
+        try:
+            openai_section = st.secrets["openai"]["api_key"]
+        except Exception:
+            openai_section = None
+        if openai_section:
+            if isinstance(openai_section, str):
+                return openai_section
+            raise TypeError("Streamlit secret 'openai.api_key' must be a string.")
+
+        if "openai_api_key" in st.secrets:
+            secret_value = st.secrets["openai_api_key"]
+            if isinstance(secret_value, str):
+                return secret_value
+            raise TypeError("Streamlit secret 'openai_api_key' must be a string.")
+
+    raise RuntimeError(
+        "OpenAI API key is not configured. Set the OPENAI_API_KEY environment variable, "
+        "define st.secrets['openai']['api_key'], or define st.secrets['openai_api_key']."
+    )
+
 def _normalise_context(context):
     """Ensure all prompt variables are strings to keep str.format happy."""
     normalised = {}

@@ -5,16 +5,22 @@ from pathlib import Path
 import requests
 
 from rag_index import GuidanceRetriever, format_behaviour_block, format_suspensions_block
-from vox_helpers import _compose_guidance_query, _get_ollama_api_key, _normalise_context
+from vox_helpers import (
+    _compose_guidance_query,
+    _get_ollama_api_key,
+    _get_openai_api_key,
+    _normalise_context,
+)
 
 
 PROMPTS_DIR = Path("prompts")
 OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "https://ollama.com/api/chat")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:120b")
+OPENAI_API_URL = os.getenv("OPENAI_API_URL", "https://api.openai.com/v1/chat/completions")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 try:
     import streamlit as st  # type: ignore
-
     HAS_STREAMLIT = True
 except ImportError:  # pragma: no cover
     HAS_STREAMLIT = False
@@ -80,8 +86,29 @@ def call_llm_ollama(system_message, prompt):
     return text
 
 
+def call_llm(system_message, prompt):
+    """Call the OpenAI Chat Completions API."""
+    api_key = _get_openai_api_key()
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
+    }
+    payload = {
+        "model": OPENAI_MODEL,
+        "messages": [
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.2,
+    }
 
-
+    response = requests.post(OPENAI_API_URL, headers=headers, json=payload, timeout=60)
+    response.raise_for_status()
+    data = response.json()
+    try:
+        return data["choices"][0]["message"]["content"]
+    except (KeyError, IndexError) as exc:
+        raise RuntimeError("OpenAI response did not include any message content.") from exc
 
 def build_prompt(template_filename, **template_context):
     """Load a prompt template and interpolate the provided variables."""
