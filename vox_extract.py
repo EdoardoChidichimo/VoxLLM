@@ -57,7 +57,7 @@ def get_guidance_retriever():
     return _guidance_retriever
 
 
-def call_llm(system_message, prompt):
+def call_llm_ollama(system_message, prompt):
     """Call Ollama chat endpoint with a simple system/user payload."""
     api_key = _get_ollama_api_key()
     headers = {
@@ -78,6 +78,8 @@ def call_llm(system_message, prompt):
     response.raise_for_status()
     text = response.json()["message"]["content"]
     return text
+
+
 
 
 
