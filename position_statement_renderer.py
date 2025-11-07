@@ -2,6 +2,7 @@ import json
 import re
 import subprocess
 import uuid
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -157,7 +158,7 @@ def _format_ground_content(grounds, placeholder_values):
     for idx, ground in enumerate(grounds):
         number = ground.get("ground_number")
         title = ground.get("ground_title", "")
-        bullets = ground.get("bullets", [])
+        bullets = ground.get("bullets") or []
 
         resolved_title = resolve_placeholders(title, placeholder_values)
         normalized_title = fix_opening_single_quotes(resolved_title)
@@ -172,9 +173,16 @@ def _format_ground_content(grounds, placeholder_values):
 
         bullet_lines = []
         for bullet in bullets:
-            content = bullet.get("content", "")
-            reference = bullet.get("reference")
-            bullet_type = (bullet.get("type") or "").lower()
+            if isinstance(bullet, Mapping):
+                bullet_data = bullet
+            elif isinstance(bullet, str):
+                bullet_data = {"type": "text", "content": bullet}
+            else:
+                bullet_data = {}
+
+            content = bullet_data.get("content", "")
+            reference = bullet_data.get("reference")
+            bullet_type = (bullet_data.get("type") or "").lower()
 
             resolved_content = resolve_placeholders(content, placeholder_values).strip()
             if bullet_type == "quote":
