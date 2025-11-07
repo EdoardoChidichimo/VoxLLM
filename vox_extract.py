@@ -104,7 +104,6 @@ def call_llm(system_message, prompt):
     payload = {
         "model": OPENAI_MODEL,
         "input": conversation,
-        "temperature": 0.1,
         "reasoning": {"effort": reasoning_effort},
         "text": {"verbosity": text_verbosity},
     }
