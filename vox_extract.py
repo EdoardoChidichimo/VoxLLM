@@ -18,6 +18,10 @@ OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "https://ollama.com/api/chat")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:120b")
 OPENAI_API_URL = os.getenv("OPENAI_API_URL", "https://api.openai.com/v1/responses")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
+try:
+    OPENAI_TIMEOUT = float(os.getenv("OPENAI_API_TIMEOUT", "240"))
+except ValueError:
+    OPENAI_TIMEOUT = 120.0
 
 try:
     import streamlit as st  # type: ignore
@@ -89,7 +93,7 @@ def call_llm_ollama(system_message, prompt):
 def call_llm(system_message, prompt):
     """Call the OpenAI Responses API with the provided prompt."""
     api_key = _get_openai_api_key()
-    reasoning_effort = os.getenv("OPENAI_REASONING_EFFORT", "medium")
+    reasoning_effort = os.getenv("OPENAI_REASONING_EFFORT", "low")
     text_verbosity = os.getenv("OPENAI_TEXT_VERBOSITY", "medium")
 
     conversation = []
@@ -108,7 +112,18 @@ def call_llm(system_message, prompt):
         "text": {"verbosity": text_verbosity},
     }
 
-    response = requests.post(OPENAI_API_URL, headers=headers, json=payload, timeout=60)
+    try:
+        response = requests.post(
+            OPENAI_API_URL,
+            headers=headers,
+            json=payload,
+            timeout=OPENAI_TIMEOUT,
+        )
+    except requests.Timeout as exc:
+        raise RuntimeError(
+            f"OpenAI request timed out after {OPENAI_TIMEOUT} seconds. "
+            "Try reducing the prompt size or increase OPENAI_API_TIMEOUT."
+        ) from exc
     if response.status_code >= 400:
         _raise_openai_error(response)
     data = response.json()
