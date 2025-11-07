@@ -89,27 +89,29 @@ def call_llm_ollama(system_message, prompt):
 def call_llm(system_message, prompt):
     """Call the OpenAI Responses API with the provided prompt."""
     api_key = _get_openai_api_key()
+    reasoning_effort = os.getenv("OPENAI_REASONING_EFFORT", "medium")
+    text_verbosity = os.getenv("OPENAI_TEXT_VERBOSITY", "medium")
+
+    conversation = []
+    if system_message:
+        conversation.append({"role": "system", "content": system_message})
+    conversation.append({"role": "user", "content": prompt})
+
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}",
     }
     payload = {
         "model": OPENAI_MODEL,
-        "input": [
-            {
-                "role": "system",
-                "content": [{"type": "text", "text": system_message}],
-            },
-            {
-                "role": "user",
-                "content": [{"type": "text", "text": prompt}],
-            },
-        ],
+        "input": conversation,
         "temperature": 0.1,
+        "reasoning": {"effort": reasoning_effort},
+        "text": {"verbosity": text_verbosity},
     }
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=payload, timeout=60)
-    response.raise_for_status()
+    if response.status_code >= 400:
+        _raise_openai_error(response)
     data = response.json()
     text = _extract_text_from_responses_output(data)
     if not text:
@@ -141,6 +143,27 @@ def _extract_text_from_responses_output(data):
         elif isinstance(output_text, list):
             texts.extend(str(part).strip() for part in output_text if str(part).strip())
     return "\n".join(part for part in texts if part)
+
+
+def _raise_openai_error(response):
+    try:
+        payload = response.json()
+    except ValueError:
+        payload = response.text
+
+    if isinstance(payload, dict):
+        error_info = payload.get("error") or {}
+        if isinstance(error_info, dict):
+            message = error_info.get("message") or response.text
+        else:
+            message = response.text
+    else:
+        message = payload or response.text
+
+    raise RuntimeError(
+        f"OpenAI API error {response.status_code}: "
+        f"{message.strip() if isinstance(message, str) else message}"
+    )
 
 def build_prompt(template_filename, **template_context):
     """Load a prompt template and interpolate the provided variables."""
