@@ -17,7 +17,7 @@ PROMPTS_DIR = Path("prompts")
 OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "https://ollama.com/api/chat")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:120b")
 OPENAI_API_URL = os.getenv("OPENAI_API_URL", "https://api.openai.com/v1/chat/completions")
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
 
 try:
     import streamlit as st  # type: ignore
