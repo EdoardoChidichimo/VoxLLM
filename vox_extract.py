@@ -16,7 +16,7 @@ from vox_helpers import (
 PROMPTS_DIR = Path("prompts")
 OLLAMA_API_URL = os.getenv("OLLAMA_API_URL", "https://ollama.com/api/chat")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gpt-oss:120b")
-OPENAI_API_URL = os.getenv("OPENAI_API_URL", "https://api.openai.com/v1/chat/completions")
+OPENAI_API_URL = os.getenv("OPENAI_API_URL", "https://api.openai.com/v1/responses")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
 
 try:
@@ -87,7 +87,7 @@ def call_llm_ollama(system_message, prompt):
 
 
 def call_llm(system_message, prompt):
-    """Call the OpenAI Chat Completions API."""
+    """Call the OpenAI Responses API with the provided prompt."""
     api_key = _get_openai_api_key()
     headers = {
         "Content-Type": "application/json",
@@ -95,20 +95,52 @@ def call_llm(system_message, prompt):
     }
     payload = {
         "model": OPENAI_MODEL,
-        "messages": [
-            {"role": "system", "content": system_message},
-            {"role": "user", "content": prompt},
+        "input": [
+            {
+                "role": "system",
+                "content": [{"type": "text", "text": system_message}],
+            },
+            {
+                "role": "user",
+                "content": [{"type": "text", "text": prompt}],
+            },
         ],
-        "temperature": 0.2,
+        "temperature": 0.1,
     }
 
     response = requests.post(OPENAI_API_URL, headers=headers, json=payload, timeout=60)
     response.raise_for_status()
     data = response.json()
-    try:
-        return data["choices"][0]["message"]["content"]
-    except (KeyError, IndexError) as exc:
-        raise RuntimeError("OpenAI response did not include any message content.") from exc
+    text = _extract_text_from_responses_output(data)
+    if not text:
+        raise RuntimeError("OpenAI responses API returned an empty result.")
+    return text
+
+
+def _extract_text_from_responses_output(data):
+    texts = []
+    if isinstance(data, dict):
+        output_blocks = data.get("output", [])
+        for block in output_blocks:
+            contents = block.get("content") if isinstance(block, dict) else None
+            if not isinstance(contents, list):
+                continue
+            for item in contents:
+                if not isinstance(item, dict):
+                    continue
+                text_value = item.get("text")
+                if isinstance(text_value, str):
+                    texts.append(text_value.strip())
+                elif isinstance(text_value, dict):
+                    inner_value = text_value.get("value")
+                    if isinstance(inner_value, str):
+                        texts.append(inner_value.strip())
+        output_text = data.get("output_text")
+        if isinstance(output_text, str):
+            texts.append(output_text.strip())
+        elif isinstance(output_text, list):
+            texts.extend(str(part).strip() for part in output_text if str(part).strip())
+    return "\n".join(part for part in texts if part)
 
 def build_prompt(template_filename, **template_context):
     """Load a prompt template and interpolate the provided variables."""
